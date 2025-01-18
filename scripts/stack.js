@@ -29,6 +29,7 @@ function sPush(){
             elem.textContent = inputval;
             elem.id = stack.length;
             elem.classList.add('data');
+            elem.style.order = stacksize-stack.length
             document.getElementById('stack').appendChild(elem)
         }
     }   
