@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>ADT</title>
+    
+</head>
+<body>
+    <nav>
+        <a class="navhome" href="../index.html">Domů</a>
+        <div class="dropdown">
+            <button onclick="menu()">Stack</button>
+            <div class="dropdown-options hidden">
+              <a href="./stack.html">Stack</a>
+            </div>
+          </div>
+    </nav>
+    <div class="app">
+        <div class="animation" id="anim">
+            <div id="stack"></div>
+        </div>
+        <div class="tabs">
+            <div class="tabs__btns">
+                <button class="btn active" id="controll" >Controll</button>
+                <button id="desc" class="btn">Description</button>
+                <button id="complexity" class="btn">Compelxity</button>
+            </div>
+            <div class="tabs__panels">
+                <div id="controll" class="cont active">
+                    <div class="container">
+                        <h2>Animace</h2>
+                        <input id="inpt" type="text" onchange="changeValue()">
+                        <button class="ctrl" onclick="sPush()">Push</button>
+                        <button class="ctrl" onclick="sPop()">Pop</button>
+                    </div>
+                </div>
+                <div id="desc" class="cont">
+                    <div class="container">
+                        <h2>Zásobník</h2>
+                        <ul>
+                            <li>LIFO (last in, first out)</li>
+                            <li>přístup pouze k vrcholu</li>
+                        </ul>
+                    </div> 
+                </div>
+                <div id="complexity" class="cont">
+                    <div class="container">
+                        <h2>Časová komplexita</h2>
+                        <ul>
+                            <li>Přidání: O(1)</li>
+                            <li>Odebrání: O(1)</li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../main.js"></script>
+    <script src="../scripts/stack.js"></script>
+</html>

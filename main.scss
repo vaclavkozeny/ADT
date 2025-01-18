@@ -1,0 +1,116 @@
+$debug:red;
+$inactive:rgb(212, 212, 212);
+$active:rgb(119, 89, 168);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+button{
+    align-items: center;
+    padding: 5px;
+}
+nav{
+    height: 2rem;
+    background-color: $inactive;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+.dropdown{
+    display: inline-block;
+    position: relative;
+}
+.dropdown-options {
+    display: block;
+    position: absolute;
+    overflow: auto;
+    background-color:$inactive;
+    border-radius: 2px;
+    margin-top: 5px;
+  }
+  
+.hidden{
+    display: none;
+}
+.navhome{
+    font-size: large;
+    margin-right: 2rem;
+} 
+.app{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    .animation{
+        width: 50vw;
+        height: 70vh;
+        border: 1px solid $debug;
+        #stack{
+            width: 20vw;
+            height: 40vh;
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+            border-right: 2px solid black;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap:2px
+        }
+        .data{
+            width: 19vw;
+            height: 7vh;
+            background-color: green;
+            border-radius: 5px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .tabs{
+        .container{
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .tabs__btns{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .btn{
+            color: $inactive;
+            background-color: transparent;
+            border: none;
+            font-size: large;
+            &.active{
+                color:$active
+            }
+        }
+        width: 50vw;
+        border: 1px solid $debug;
+        &__panels{
+            >div{
+                width: 100%;
+                display: none;
+            }
+            >div.active{
+                display: flex;
+            }
+        }
+    }
+}
