@@ -11,16 +11,16 @@
     <nav>
         <a class="navhome" href="../index.html">Domů</a>
         <div class="dropdown">
-            <button onclick="menu()">Stack</button>
+            <button onclick="menu()">Queue</button>
             <div class="dropdown-options hidden">
-              <a href="./stack.html">Stack</a>
-              <a href="../pages/queue.html">Queue</a>
+              <a href="../pages/stack.html">Stack</a>
+              <a href="./queue.html">Queue</a>
             </div>
           </div>
     </nav>
     <div class="app">
         <div class="animation" id="anim">
-            <div id="stack"></div>
+            <div id="queue"></div>
         </div>
         <div class="tabs">
             <div class="tabs__btns">
@@ -33,16 +33,16 @@
                     <div class="container">
                         <h2>Animace</h2>
                         <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl" onclick="sPush()">Push</button>
-                        <button class="ctrl" onclick="sPop()">Pop</button>
+                        <button class="ctrl" onclick="enqueue()">Enqueue</button>
+                        <button class="ctrl" onclick="dequeue()">Dequeue</button>
                     </div>
                 </div>
                 <div id="desc" class="cont">
                     <div class="container">
-                        <h2>Zásobník</h2>
+                        <h2>Fronta</h2>
                         <ul>
-                            <li>LIFO (last in, first out)</li>
-                            <li>přístup pouze k vrcholu</li>
+                            <li>FIFO (first in, first out)</li>
+                            <li>prvky se odebírají v pořadí, ve kterém se vkládají</li>
                         </ul>
                     </div> 
                 </div>
@@ -60,5 +60,5 @@
     </div>
 </body>
 <script src="../main.js"></script>
-    <script src="../scripts/stack.js"></script>
+    <script src="../scripts/queue.js"></script>
 </html>

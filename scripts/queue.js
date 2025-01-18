@@ -18,32 +18,33 @@ if(tabbtns && tabcontent){
 }
 
 var inputval;
-var input = document.getElementById('inpt');
-const stackSize = 5;
-var stack = [];
-function sPush(){
-    if(stack.length < stackSize){
+const queueSize = 5;
+var elementQueue = [];
+var i = 0;
+var input = document.getElementById("inpt");
+function enqueue(){
+    if(elementQueue.length < queueSize){
         if(inputval){
-            stack.push(inputval);
             const elem = document.createElement('p');
             elem.textContent = inputval;
-            elem.id = stack.length;
-            elem.classList.add('stackData');
-            elem.style.order = stackSize-stack.length
-            document.getElementById('stack').appendChild(elem)
+            elem.id = i;
+            elem.classList.add('queueData');
+            elem.style.order = i++;
+            elementQueue.push(elem);
+            document.getElementById('queue').appendChild(elem);
         }
     }   
     else
-        console.log("stack is full");
+        console.log("queue is full");
 }
-function sPop(){
-    if(stack.length > 0){
-        stack.pop();
-        document.getElementById('stack').removeChild(document.getElementById(stack.length+1))
+function dequeue(){
+    if(elementQueue.length > 0){
+        document.getElementById('queue').removeChild(document.getElementById(`${elementQueue[0].id}`));
+        elementQueue.shift();
     }
         
     else
-        console.log("stack is empty");
+        console.log("queue is empty");
 }
 function changeValue(){
     inputval = input.value;

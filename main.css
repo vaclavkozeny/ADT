@@ -74,9 +74,30 @@ nav {
   justify-content: flex-end;
   gap: 2px;
 }
-.app .animation .data {
+.app .animation .stackData {
   width: 19vw;
   height: 7vh;
+  background-color: green;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.app .animation #queue {
+  width: 40vw;
+  height: 15vh;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+.app .animation .queueData {
+  width: 20%;
+  height: 100%;
   background-color: green;
   border-radius: 5px;
   margin-left: auto;
