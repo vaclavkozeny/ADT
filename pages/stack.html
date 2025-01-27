@@ -20,24 +20,28 @@
     </nav>
     <div class="app">
         <div class="animation" id="anim">
-            <div id="stack"></div>
-        </div>
+            <div id="stackContainer">
+                <div id="stack"></div>
+                <div id="error"></div>
+            </div>
+            </div>
         <div class="tabs">
             <div class="tabs__btns">
                 <button class="btn active" id="controll" >Controll</button>
-                <button id="desc" class="btn">Description</button>
-                <button id="complexity" class="btn">Compelxity</button>
+                <button class="btn" id="desc" >Description</button>
+                <button class="btn" id="complexity" >Compelxity</button>
+                <button class="btn" id="code">Code</button>
             </div>
             <div class="tabs__panels">
-                <div id="controll" class="cont active">
+                <div id="controll" class="content active">
                     <div class="container">
                         <h2>Animace</h2>
                         <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl" onclick="sPush()">Push</button>
-                        <button class="ctrl" onclick="sPop()">Pop</button>
+                        <button class="ctrl in" onclick="sPush()">Push</button>
+                        <button class="ctrl out" onclick="sPop()">Pop</button>
                     </div>
                 </div>
-                <div id="desc" class="cont">
+                <div id="desc" class="content">
                     <div class="container">
                         <h2>Zásobník</h2>
                         <ul>
@@ -46,7 +50,7 @@
                         </ul>
                     </div> 
                 </div>
-                <div id="complexity" class="cont">
+                <div id="complexity" class="content">
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
@@ -54,6 +58,11 @@
                             <li>Odebrání: O(1)</li>
                         </ul>
                     </div> 
+                </div>
+                <div id="code" class="content">
+                    <div class="container">
+                        <h2>Kód</h2>
+                    </div>
                 </div>
             </div>
         </div>

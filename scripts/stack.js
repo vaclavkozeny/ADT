@@ -1,5 +1,6 @@
+// tabs mapping
 var tabbtns = document.querySelectorAll(".btn");
-var tabcontent = document.querySelectorAll(".cont");
+var tabcontent = document.querySelectorAll(".content");
 
 if(tabbtns && tabcontent){
     tabbtns.forEach(b=>{
@@ -17,34 +18,64 @@ if(tabbtns && tabcontent){
     })
 }
 
+//--------------------------------------------
 var inputval;
+var stacksize;
 var input = document.getElementById('inpt');
+var err = document.getElementById('error');
+const popArr = document.getElementById("popArrow");
 const stackSize = 5;
 var stack = [];
+var errorFullDisplayed = false;
+var errorEmptyDisplayed = false;
+
 function sPush(){
     if(stack.length < stackSize){
         if(inputval){
             stack.push(inputval);
-            const elem = document.createElement('p');
+            //-------- create element ------------------
+            const elem = document.createElement('div');
             elem.textContent = inputval;
             elem.id = stack.length;
-            elem.classList.add('stackData');
-            elem.style.order = stackSize-stack.length
-            document.getElementById('stack').appendChild(elem)
+            elem.classList.add('data');
+            elem.classList.add('stack');
+            elem.style.order = stackSize-stack.length;
+            document.getElementById('stack').appendChild(elem);
         }
     }   
-    else
-        console.log("stack is full");
-}
-function sPop(){
-    if(stack.length > 0){
-        stack.pop();
-        document.getElementById('stack').removeChild(document.getElementById(stack.length+1))
+    else{
+        if(errorEmptyDisplayed === false && errorFullDisplayed === false){
+            errorFullDisplayed = true;
+            err.textContent = "Stack is full";
+            err.style.display = 'flex';
+            setTimeout(() => {
+                err.style.display = 'none';
+            }, 1000); 
+            errorFullDisplayed = false;
+        }
     }
         
-    else
-        console.log("stack is empty");
 }
+
+function sPop(){
+    if(stack.length > 0){
+        document.getElementById('stack').removeChild(document.getElementById(stack.length));
+        stack.pop();
+    }     
+    else{
+        if(errorEmptyDisplayed === false && errorFullDisplayed === false){
+            errorEmptyDisplayed = true;
+            err.textContent = "Stack is empty";
+            err.style.display = 'flex';
+            setTimeout(() => {
+                err.style.display = 'none';
+            }, 1000); 
+            errorEmptyDisplayed = false;
+        }
+    }
+}   
+//------------------------------------
+//onchange
 function changeValue(){
     inputval = input.value;
 }

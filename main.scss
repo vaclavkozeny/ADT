@@ -1,6 +1,8 @@
 $debug:red;
 $inactive:rgb(212, 212, 212);
 $active:rgb(119, 89, 168);
+$inGreen:rgb(96, 219, 65);
+$outRed:rgb(245, 90, 90);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 *{
     margin: 0;
@@ -53,27 +55,26 @@ nav{
         width: 50vw;
         height: 70vh;
         border: 1px solid $debug;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        #stackContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
         #stack{
             width: 20vw;
             height: 40vh;
             border-bottom: 2px solid black;
             border-left: 2px solid black;
             border-right: 2px solid black;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            gap:2px
-        }
-        .stackData{
-            width: 19vw;
-            height: 7vh;
-            background-color: green;
-            border-radius: 5px;
-            margin-left: auto;
-            margin-right: auto;
+            gap:2px;
+            margin-top: 10vh;
         }
         #queue{
             width: 40vw;
@@ -88,13 +89,52 @@ nav{
             align-items: center;
             gap:2px
         }
-        .queueData{
-            width: 20%;
-            height: 100%;
+        .data{
             background-color: green;
             border-radius: 5px;
             margin-left: auto;
             margin-right: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            &::before{
+                content: url("./images/arrow-narrow-right-svgrepo-com.svg");
+                position: relative;
+                height: 7vh;
+                right: 50%;
+                top: -125%;
+            }
+            &::after{
+                content: url("./images/arrow-narrow-left-svgrepo-com.svg");
+                position: relative;
+                height: 7vh;
+                left: 50%;
+                top: -25%;
+            }
+            &.stack{
+                width: 20vw;
+                height: 7vh;
+            }
+            &.queue{
+                width: 20%;
+                height: 100%;
+            }
+        }
+        #error{
+            width: 20vw;
+            border: 1px solid $outRed;
+            margin-top: 5vh;
+            display: none;
+            justify-content: center;
+        }
+        #popArrow{
+            position: relative;
+            height: 7vh;
+        }
+        #pushArrow{
+            position: relative;
+            height: 7vh;
         }
     }
     .tabs{
@@ -106,6 +146,7 @@ nav{
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+            gap: 2px;
         }
         .tabs__btns{
             display: flex;
@@ -121,6 +162,21 @@ nav{
             &.active{
                 color:$active
             }
+        }
+        .ctrl{
+            width: 8vw;
+            height: 3vh;
+            border-radius: 7px;
+            &.in{
+                background-color: $inGreen;
+            }
+            &.out{
+                background-color: $outRed;
+            }
+        }
+        #inpt{
+            width: 8vw;
+            height: 3vh;
         }
         width: 50vw;
         border: 1px solid $debug;

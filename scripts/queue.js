@@ -25,10 +25,11 @@ var input = document.getElementById("inpt");
 function enqueue(){
     if(elementQueue.length < queueSize){
         if(inputval){
-            const elem = document.createElement('p');
+            const elem = document.createElement('div');
             elem.textContent = inputval;
             elem.id = i;
-            elem.classList.add('queueData');
+            elem.classList.add('data');
+            elem.classList.add('queue')
             elem.style.order = i++;
             elementQueue.push(elem);
             document.getElementById('queue').appendChild(elem);

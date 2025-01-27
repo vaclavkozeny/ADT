@@ -59,6 +59,15 @@ nav {
   width: 50vw;
   height: 70vh;
   border: 1px solid red;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.app .animation #stackContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .app .animation #stack {
   width: 20vw;
@@ -66,21 +75,11 @@ nav {
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 2px;
-}
-.app .animation .stackData {
-  width: 19vw;
-  height: 7vh;
-  background-color: green;
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10vh;
 }
 .app .animation #queue {
   width: 40vw;
@@ -95,13 +94,52 @@ nav {
   align-items: center;
   gap: 2px;
 }
-.app .animation .queueData {
-  width: 20%;
-  height: 100%;
+.app .animation .data {
   background-color: green;
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.app .animation .data::before {
+  content: url("./images/arrow-narrow-right-svgrepo-com.svg");
+  position: relative;
+  height: 7vh;
+  right: 50%;
+  top: -125%;
+}
+.app .animation .data::after {
+  content: url("./images/arrow-narrow-left-svgrepo-com.svg");
+  position: relative;
+  height: 7vh;
+  left: 50%;
+  top: -25%;
+}
+.app .animation .data.stack {
+  width: 20vw;
+  height: 7vh;
+}
+.app .animation .data.queue {
+  width: 20%;
+  height: 100%;
+}
+.app .animation #error {
+  width: 20vw;
+  border: 1px solid rgb(245, 90, 90);
+  margin-top: 5vh;
+  display: none;
+  justify-content: center;
+}
+.app .animation #popArrow {
+  position: relative;
+  height: 7vh;
+}
+.app .animation #pushArrow {
+  position: relative;
+  height: 7vh;
 }
 .app .tabs {
   width: 50vw;
@@ -115,6 +153,7 @@ nav {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 2px;
 }
 .app .tabs .tabs__btns {
   display: flex;
@@ -130,6 +169,21 @@ nav {
 }
 .app .tabs .btn.active {
   color: rgb(119, 89, 168);
+}
+.app .tabs .ctrl {
+  width: 8vw;
+  height: 3vh;
+  border-radius: 7px;
+}
+.app .tabs .ctrl.in {
+  background-color: rgb(96, 219, 65);
+}
+.app .tabs .ctrl.out {
+  background-color: rgb(245, 90, 90);
+}
+.app .tabs #inpt {
+  width: 8vw;
+  height: 3vh;
 }
 .app .tabs__panels > div {
   width: 100%;
