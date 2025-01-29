@@ -91,55 +91,68 @@ nav {
   margin-top: 20vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 2px;
 }
 .app .animation .data {
   background-color: green;
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
-.app .animation .data::before {
+.app .animation .data.stack::before {
   content: url("./images/arrow-narrow-right-svgrepo-com.svg");
   position: relative;
   height: 7vh;
   right: 50%;
   top: -125%;
 }
-.app .animation .data::after {
+.app .animation .data.stack::after {
   content: url("./images/arrow-narrow-left-svgrepo-com.svg");
   position: relative;
   height: 7vh;
   left: 50%;
   top: -25%;
 }
+.app .animation .data.queue::before {
+  content: url("./images/arrow-narrow-down-svgrepo-com.svg");
+  position: relative;
+  top: -80%;
+  left: 55%;
+  width: 0%;
+}
+.app .animation .data.queue.first::after {
+  content: url("./images/arrow-narrow-up-svgrepo-com.svg");
+  width: 0%;
+  position: relative;
+  top: 83%;
+  left: -55%;
+}
+.app .animation .data.hideBefore::before {
+  content: none;
+}
+.app .animation .data.hideAfter::after {
+  content: none;
+}
 .app .animation .data.stack {
   width: 20vw;
   height: 7vh;
 }
 .app .animation .data.queue {
-  width: 20%;
+  width: 7.5vw;
   height: 100%;
 }
-.app .animation #error {
+.app .animation .error {
   width: 20vw;
   border: 1px solid rgb(245, 90, 90);
-  margin-top: 5vh;
   display: none;
   justify-content: center;
+  margin-top: 5vh;
 }
-.app .animation #popArrow {
-  position: relative;
-  height: 7vh;
-}
-.app .animation #pushArrow {
-  position: relative;
-  height: 7vh;
+.app .animation .error.queue {
+  align-self: center;
 }
 .app .tabs {
   width: 50vw;

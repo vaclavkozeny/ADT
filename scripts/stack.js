@@ -22,8 +22,7 @@ if(tabbtns && tabcontent){
 var inputval;
 var stacksize;
 var input = document.getElementById('inpt');
-var err = document.getElementById('error');
-const popArr = document.getElementById("popArrow");
+var err = document.getElementsByClassName('error')[0];
 const stackSize = 5;
 var stack = [];
 var errorFullDisplayed = false;
@@ -32,6 +31,10 @@ var errorEmptyDisplayed = false;
 function sPush(){
     if(stack.length < stackSize){
         if(inputval){
+            if(stack.length != 0){
+                document.getElementById(`${stack.length}`).classList.add("hideBefore");
+                document.getElementById(`${stack.length}`).classList.add("hideAfter");
+            }
             stack.push(inputval);
             //-------- create element ------------------
             const elem = document.createElement('div');
@@ -61,6 +64,11 @@ function sPop(){
     if(stack.length > 0){
         document.getElementById('stack').removeChild(document.getElementById(stack.length));
         stack.pop();
+        if(stack.length > 0){
+            document.getElementById(`${stack.length}`).classList.remove("hideBefore");
+            document.getElementById(`${stack.length}`).classList.remove("hideAfter");
+        }
+           
     }     
     else{
         if(errorEmptyDisplayed === false && errorFullDisplayed === false){

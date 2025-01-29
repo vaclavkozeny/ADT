@@ -86,55 +86,68 @@ nav{
             margin-top: 20vh;
             display: flex;
             justify-content: flex-start;
-            align-items: center;
-            gap:2px
+            align-items: flex-start; 
+            gap: 2px;
         }
         .data{
             background-color: green;
             border-radius: 5px;
-            margin-left: auto;
-            margin-right: auto;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            &::before{
+            &.stack::before{
                 content: url("./images/arrow-narrow-right-svgrepo-com.svg");
                 position: relative;
                 height: 7vh;
                 right: 50%;
                 top: -125%;
             }
-            &::after{
+            &.stack::after{
                 content: url("./images/arrow-narrow-left-svgrepo-com.svg");
                 position: relative;
                 height: 7vh;
                 left: 50%;
                 top: -25%;
             }
+            &.queue::before{
+                content: url("./images/arrow-narrow-down-svgrepo-com.svg");
+                position: relative;
+                top: -80%;
+                left: 55%;
+                width: 0%;
+            }
+            &.queue.first::after{
+                content: url("./images/arrow-narrow-up-svgrepo-com.svg");
+                width: 0%;
+                position: relative;
+                top: 83%;
+                left: -55%;          
+            }
+            &.hideBefore::before{
+                content: none;
+            }
+            &.hideAfter::after{
+                content: none;
+            }
             &.stack{
                 width: 20vw;
                 height: 7vh;
             }
             &.queue{
-                width: 20%;
+                width: 7.5vw;
                 height: 100%;
             }
         }
-        #error{
+        .error{
             width: 20vw;
             border: 1px solid $outRed;
-            margin-top: 5vh;
             display: none;
             justify-content: center;
-        }
-        #popArrow{
-            position: relative;
-            height: 7vh;
-        }
-        #pushArrow{
-            position: relative;
-            height: 7vh;
+            margin-top: 5vh;
+            &.queue{
+                align-self: center;
+            }
         }
     }
     .tabs{

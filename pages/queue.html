@@ -20,16 +20,20 @@
     </nav>
     <div class="app">
         <div class="animation" id="anim">
-            <div id="queue"></div>
+            <div id="stackContainer">
+                <div id="queue"></div>
+                <div class="error queue"></div>
+            </div>
         </div>
         <div class="tabs">
             <div class="tabs__btns">
                 <button class="btn active" id="controll" >Controll</button>
-                <button id="desc" class="btn">Description</button>
-                <button id="complexity" class="btn">Compelxity</button>
+                <button class="btn" id="desc" >Description</button>
+                <button class="btn" id="complexity" >Compelxity</button>
+                <button class="btn" id="code">Code</button>
             </div>
             <div class="tabs__panels">
-                <div id="controll" class="cont active">
+                <div id="controll" class="content active">
                     <div class="container">
                         <h2>Animace</h2>
                         <input id="inpt" type="text" onchange="changeValue()">
@@ -37,7 +41,7 @@
                         <button class="ctrl out" onclick="dequeue()">Dequeue</button>
                     </div>
                 </div>
-                <div id="desc" class="cont">
+                <div id="desc" class="content">
                     <div class="container">
                         <h2>Fronta</h2>
                         <ul>
@@ -46,7 +50,7 @@
                         </ul>
                     </div> 
                 </div>
-                <div id="complexity" class="cont">
+                <div id="complexity" class="content">
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
@@ -55,6 +59,7 @@
                         </ul>
                     </div> 
                 </div>
+                <div id="code" class="content"
             </div>
         </div>
     </div>
