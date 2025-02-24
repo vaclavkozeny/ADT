@@ -19,32 +19,20 @@ if(tabbtns && tabcontent){
 
 var inputval;
 const queueSize = 5;
-var elementQueue = [];
+var queue = [];
 var i = 0;
 var input = document.getElementById("inpt");
 var err = document.getElementsByClassName('error')[0];
 var errorFullDisplayed = false;
 var errorEmptyDisplayed = false;
+
 function enqueue(){
-    if(elementQueue.length < queueSize){
+    if(queue.length < queueSize){
         if(inputval){
-            if(elementQueue.length > 0){
-                document.getElementById(`${i-1}`).classList.add("hideBefore");
-            }
-            const elem = document.createElement('div');
-            elem.textContent = inputval;
-            elem.id = i;
-            elem.classList.add('data');
-            elem.classList.add('queue')
-            elem.style.order = i++;
-            elementQueue.push(elem);
-            document.getElementById('queue').appendChild(elem);
-            if(elementQueue.length === 1){
-                elementQueue[0].classList.add("first");
-            }
+            queue.push(inputval);
         }
-    }   
-    else{
+        redraw();
+    }else{
         if(errorEmptyDisplayed === false && errorFullDisplayed === false){
             errorFullDisplayed = true;
             err.textContent = "Queue is full";
@@ -55,17 +43,37 @@ function enqueue(){
             errorFullDisplayed = false;
         }
     }
+    
+
+}
+function redraw(){
+    const q = document.getElementById('queue');
+    while (q.firstChild) {
+        q.removeChild(q.firstChild);
+    }
+    queue.map((item, index)=>{
+        const elem = document.createElement('div');
+        elem.textContent = item;
+        elem.id = index;
+        elem.classList.add('data');
+        elem.classList.add('queue');
+        if(index != queue.length-1){
+            elem.classList.add('hideBefore');
+        }
+        if(index === 0){
+            elem.classList.add('first');
+        }
+        if(index === queueSize-1){
+            elem.classList.add('hideBefore');
+        }
+        q.appendChild(elem);
+    })
 }
 function dequeue(){
-    if(elementQueue.length > 0){
-        document.getElementById('queue').removeChild(document.getElementById(`${elementQueue[0].id}`));
-        elementQueue.shift();
-        if(elementQueue.length > 0){
-            elementQueue[0].classList.add("first");
-        }
-    }
-        
-    else{
+    if(queue.length > 0){
+        queue.shift();
+        redraw();
+    }else{
         if(errorEmptyDisplayed === false && errorFullDisplayed === false){
             errorEmptyDisplayed = true;
             err.textContent = "Queue is empty";
