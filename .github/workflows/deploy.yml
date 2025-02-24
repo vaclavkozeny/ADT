@@ -1,0 +1,26 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches:
+      - main  # Zdrojová větev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Prepare deployment directory
+        run: |
+          mkdir deploy
+          cp -r index.html main.css main.js images pages scripts deploy/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: gh-pages  # Cílová větev
