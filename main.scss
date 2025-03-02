@@ -58,11 +58,11 @@ nav{
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        #stackContainer{
+        #appContainer{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
         #stack{
             width: 20vw;
@@ -88,6 +88,13 @@ nav{
             justify-content: flex-start;
             align-items: flex-start; 
             gap: 2px;
+        }
+        #set{
+            display: flex;
+            width: 40vw;
+            height: 40vh;
+            border: black solid 2px;
+            margin-top: 10vh;
         }
         .data{
             background-color: green;
@@ -137,6 +144,11 @@ nav{
             &.queue{
                 width: 7.5vw;
                 height: 100%;
+            }
+            &.set{
+                padding: 5px;
+                width: 5vw;
+                height: 5vh;
             }
         }
         .error{

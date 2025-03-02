@@ -11,27 +11,27 @@
     <nav>
         <a class="navhome" href="../index.html">Domů</a>
         <div class="dropdown">
-            <button onclick="menu()">Queue</button>
+            <button onclick="menu()">Množina</button>
             <div class="dropdown-options hidden">
-              <a href="./stack.html">Stack</a>
-              <a href="./queue.html">Queue</a>
-              <a href="./set.html">Set</a>
+              <a href="./stack.html">Zásobník</a>
+              <a href="./queue.html">Fronta</a>
+              <a href="./set.html">Množina</a>
             </div>
           </div>
     </nav>
     <div class="app">
         <div class="animation" id="anim">
-            <div id="stackContainer">
+            <div id="appContainer">
                 <div id="set"></div>
-                <div class="error queue"></div>
+                <div class="error set"></div>
             </div>
         </div>
         <div class="tabs">
             <div class="tabs__btns">
-                <button class="btn active" id="controll" >Controll</button>
-                <button class="btn" id="desc" >Description</button>
-                <button class="btn" id="complexity" >Compelxity</button>
-                <button class="btn" id="code">Code</button>
+                <button class="btn active" id="controll" >Vizualizace</button>
+                <button class="btn" id="desc" >Popis</button>
+                <button class="btn" id="complexity" >Komplexita</button>
+                <button class="btn" id="code">Kód</button>
             </div>
             <div class="tabs__panels">
                 <div id="controll" class="content active">
@@ -67,5 +67,5 @@
     </div>
 </body>
 <script src="../main.js"></script>
-    <script src="../scripts/queue.js"></script>
+    <script src="../scripts/set.js"></script>
 </html>
