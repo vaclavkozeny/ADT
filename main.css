@@ -63,11 +63,11 @@ nav {
   align-items: flex-start;
   justify-content: center;
 }
-.app .animation #stackContainer {
+.app .animation #appContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 .app .animation #stack {
   width: 20vw;
@@ -93,6 +93,13 @@ nav {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 2px;
+}
+.app .animation #set {
+  display: flex;
+  width: 40vw;
+  height: 40vh;
+  border: black solid 2px;
+  margin-top: 10vh;
 }
 .app .animation .data {
   background-color: green;
@@ -143,6 +150,11 @@ nav {
 .app .animation .data.queue {
   width: 7.5vw;
   height: 100%;
+}
+.app .animation .data.set {
+  padding: 5px;
+  width: 5vw;
+  height: 5vh;
 }
 .app .animation .error {
   width: 20vw;
