@@ -96,6 +96,11 @@ nav{
             border: black solid 2px;
             margin-top: 10vh;
         }
+        #list{
+            display: flex;
+            margin-top: 10rem;
+            gap: 10px;
+        }
         .data{
             background-color: green;
             border-radius: 5px;
@@ -150,6 +155,17 @@ nav{
                 width: 5vw;
                 height: 5vh;
             }
+            &.list{
+                width: 5rem;
+                height: 5rem;
+            }
+            &.list::before{
+                content:  attr(data-before);
+                position: relative;
+                top: -3.5rem;
+                width: 0;
+                color: black;
+            }
         }
         .error{
             width: 20vw;
@@ -163,6 +179,22 @@ nav{
         }
     }
     .tabs{
+        .tabs__panels{
+            .inputRow{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .inputBox{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .ctrl{
+                    height: 100%;
+                }
+            }
+        }
         .container{
             width: 80%;
             margin-left: auto;
