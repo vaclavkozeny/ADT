@@ -101,6 +101,11 @@ nav {
   border: black solid 2px;
   margin-top: 10vh;
 }
+.app .animation #list {
+  display: flex;
+  margin-top: 10rem;
+  gap: 10px;
+}
 .app .animation .data {
   background-color: green;
   border-radius: 5px;
@@ -156,6 +161,17 @@ nav {
   width: 5vw;
   height: 5vh;
 }
+.app .animation .data.list {
+  width: 5rem;
+  height: 5rem;
+}
+.app .animation .data.list::before {
+  content: attr(data-before);
+  position: relative;
+  top: -3.5rem;
+  width: 0;
+  color: black;
+}
 .app .animation .error {
   width: 20vw;
   border: 1px solid rgb(245, 90, 90);
@@ -169,6 +185,20 @@ nav {
 .app .tabs {
   width: 50vw;
   border: 1px solid red;
+}
+.app .tabs .tabs__panels .inputRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.app .tabs .tabs__panels .inputBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.app .tabs .tabs__panels .inputBox .ctrl {
+  height: 100%;
 }
 .app .tabs .container {
   width: 80%;
