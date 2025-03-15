@@ -185,6 +185,9 @@ nav{
                 flex-direction: row;
                 justify-content: space-between;
                 width: 100%;
+                &.delete{
+                    justify-content: flex-start;
+                }
             }
             .inputBox{
                 width: 100%;
@@ -193,6 +196,11 @@ nav{
                 .ctrl{
                     height: 100%;
                 }
+                margin-top: 1rem;
+                input{
+                    height: 100%;
+                }
+                
             }
         }
         .container{
