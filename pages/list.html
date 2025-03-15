@@ -54,16 +54,14 @@
                         
                         
                         <div class="inputBox">
-                            <div>
-                                <div class="inputRow">
-                                    <label>Hodnota pro odstranění: </label>
-                                    <input id="inpt_deleteValue" type="text" onchange="changeValue()">
+                                <div class="inputRow delete">
+                                    <select id="deleteType" onchange="changeValue()">
+                                        <option>Hodnota</option>
+                                        <option>Pozice</option>
+                                    </select>
+                                    <label>pro odstranění: </label>
+                                    <input id="inpt_delete" type="text" onchange="changeValue()">
                                 </div>
-                                <div class="inputRow">
-                                    <label>Pozice odstranění: </label>
-                                    <input id="inpt_deletePosition" type="text" onchange="changeValue()">
-                                </div>
-                            </div>
                             <button class="ctrl out" onclick="listDelete()">Delete</button>
                         </div>
                         

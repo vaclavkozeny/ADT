@@ -1,14 +1,15 @@
 var inputValue;
 var inputPosition;
 var deleteValue;
-var deletePosition;
+var deleteType;
 var inputValueElem = document.getElementById("inpt_addValue");
 var inputPositionElem = document.getElementById("inpt_addPosition");
-var deleteValueElem = document.getElementById("inpt_deleteValue");
-var deletePositionElem = document.getElementById("inpt_deletePosition");
+var deleteElem = document.getElementById("inpt_delete");
+var deleteTypeElem = document.getElementById('deleteType');
 var err = document.getElementsByClassName('error')[0];
 var list = [];
 function listAdd(){
+    inputValue = parseInt(inputValue)
     if(inputValue && list.length === 0){
         list.push(inputValue);
     }
@@ -42,17 +43,18 @@ function redraw(){
     })
 }
 function listDelete(){
-    if(deletePosition){
-        list.splice(parseInt(deletePosition),1)
+    deleteValue = parseInt(deleteValue);
+    if(deleteValue &&  deleteType === "Pozice"){
+        list.splice(deleteValue,1);
     }
-    else if(deleteValue){
-        list.splice(list.indexOf(parseInt(deleteValue)),1)
+    else if(deleteValue && deleteType === "Hodnota" && list.includes(deleteValue)){
+        list.splice(list.indexOf(deleteValue),1);
     }
-    redraw()
+    redraw();
 }
 function changeValue() {
     inputValue = inputValueElem.value;
     inputPosition = inputPositionElem.value;
-    deleteValue = deleteValueElem.value;
-    deletePosition = deletePositionElem.value;
+    deleteValue = deleteElem.value;
+    deleteType = deleteTypeElem.value;
 }
