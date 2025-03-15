@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main.css">
-    <title>Set</title>
+    <title>List</title>
     
 </head>
 <body>
     <nav>
         <a class="navhome" href="../index.html">Domů</a>
         <div class="dropdown">
-            <button onclick="menu()">Množina</button>
+            <button onclick="menu()">Seznam</button>
             <div class="dropdown-options hidden">
               <a href="./stack.html">Zásobník</a>
               <a href="./queue.html">Fronta</a>
@@ -23,8 +23,8 @@
     <div class="app">
         <div class="animation" id="anim">
             <div id="appContainer">
-                <div id="set"></div>
-                <div class="error set"></div>
+                <div id="list"></div>
+                <div class="error list"></div>
             </div>
         </div>
         <div class="tabs">
@@ -38,14 +38,41 @@
                 <div id="controll" class="content active">
                     <div class="container">
                         <h2>Vizualizace</h2>
-                        <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl in" onclick="setAdd()">Add</button>
-                        <button class="ctrl out" onclick="setDelete()">Delete</button>
+                        <div class="inputBox">
+                            <div>
+                                <div class="inputRow">
+                                    <label>Vstupní hodnota:</label>
+                                    <input id="inpt_addValue" type="text" onchange="changeValue()">
+                                </div>
+                                <div class="inputRow">
+                                    <label>Vstupní pozice:</label>
+                                    <input id="inpt_addPosition" type="text" onchange="changeValue()">
+                                </div>
+                            </div>
+                            <button class="ctrl in" onclick="listAdd()">Add</button>
+                        </div>
+                        
+                        
+                        <div class="inputBox">
+                                <div class="inputRow delete">
+                                    <select id="deleteType" onchange="changeValue()">
+                                        <option>Hodnota</option>
+                                        <option>Pozice</option>
+                                    </select>
+                                    <label>pro odstranění: </label>
+                                    <input id="inpt_delete" type="text" onchange="changeValue()">
+                                </div>
+                            <button class="ctrl out" onclick="listDelete()">Delete</button>
+                        </div>
+                        
+                        
+                        
+                        
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
-                        <h2>Množina</h2>
+                        <h2>Seznam</h2>
                         <ul>
                             
                         </ul>
@@ -55,7 +82,7 @@
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Přidání: O(1)</li>
+                            <li>Přidání: O(n)/O(1)</li>
                             <li>Odebrání: O(n)</li>
                         </ul>
                     </div> 
@@ -68,5 +95,5 @@
     </div>
 </body>
 <script src="../main.js"></script>
-    <script src="../scripts/set.js"></script>
+    <script src="../scripts/list.js"></script>
 </html>
