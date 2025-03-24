@@ -9,7 +9,7 @@ var tabcontent = document.querySelectorAll(".content");
 if(tabbtns && tabcontent){
     tabbtns.forEach(b=>{
         b.addEventListener('click',()=>{
-            var tabid = b.getAttribute('id');
+            var tabid = b.getAttribute('data-tab');
             tabbtns.forEach(bt=>{bt.classList.remove('active')});
             b.classList.add('active');
             tabcontent.forEach(c=>{

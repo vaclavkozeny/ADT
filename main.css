@@ -71,15 +71,15 @@ nav {
 }
 .app .animation #stack {
   width: 20vw;
-  height: 40vh;
+  height: 45vh;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin-top: 80px;
   gap: 2px;
-  margin-top: 10vh;
 }
 .app .animation #queue {
   width: 40vw;
@@ -107,50 +107,16 @@ nav {
   gap: 10px;
 }
 .app .animation .data {
-  background-color: green;
+  background-color: rgb(119, 89, 168);
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
-.app .animation .data.stack::before {
-  content: url("./images/arrow-narrow-right-svgrepo-com.svg");
-  position: relative;
-  height: 7vh;
-  right: 50%;
-  top: -125%;
-}
-.app .animation .data.stack::after {
-  content: url("./images/arrow-narrow-left-svgrepo-com.svg");
-  position: relative;
-  height: 7vh;
-  left: 50%;
-  top: -25%;
-}
-.app .animation .data.queue::before {
-  content: url("./images/arrow-narrow-down-svgrepo-com.svg");
-  position: relative;
-  top: -80%;
-  left: 55%;
-  width: 0%;
-}
-.app .animation .data.queue.first::after {
-  content: url("./images/arrow-narrow-up-svgrepo-com.svg");
-  width: 0%;
-  position: relative;
-  top: 83%;
-  left: -55%;
-}
-.app .animation .data.hideBefore::before {
-  content: none;
-}
-.app .animation .data.hideAfter::after {
-  content: none;
-}
 .app .animation .data.stack {
   width: 20vw;
-  height: 7vh;
+  height: 80px;
 }
 .app .animation .data.queue {
   width: 7.5vw;
@@ -164,13 +130,6 @@ nav {
 .app .animation .data.list {
   width: 5rem;
   height: 5rem;
-}
-.app .animation .data.list::before {
-  content: attr(data-before);
-  position: relative;
-  top: -3.5rem;
-  width: 0;
-  color: black;
 }
 .app .animation .error {
   width: 20vw;
