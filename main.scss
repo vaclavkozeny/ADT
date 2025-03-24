@@ -66,15 +66,15 @@ nav{
         }
         #stack{
             width: 20vw;
-            height: 40vh;
+            height: 45vh;
             border-bottom: 2px solid black;
             border-left: 2px solid black;
             border-right: 2px solid black;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            gap:2px;
-            margin-top: 10vh;
+            margin-top: 80px;
+            gap: 2px;
         }
         #queue{
             width: 40vw;
@@ -102,49 +102,15 @@ nav{
             gap: 10px;
         }
         .data{
-            background-color: green;
+            background-color: $active;
             border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            &.stack::before{
-                content: url("./images/arrow-narrow-right-svgrepo-com.svg");
-                position: relative;
-                height: 7vh;
-                right: 50%;
-                top: -125%;
-            }
-            &.stack::after{
-                content: url("./images/arrow-narrow-left-svgrepo-com.svg");
-                position: relative;
-                height: 7vh;
-                left: 50%;
-                top: -25%;
-            }
-            &.queue::before{
-                content: url("./images/arrow-narrow-down-svgrepo-com.svg");
-                position: relative;
-                top: -80%;
-                left: 55%;
-                width: 0%;
-            }
-            &.queue.first::after{
-                content: url("./images/arrow-narrow-up-svgrepo-com.svg");
-                width: 0%;
-                position: relative;
-                top: 83%;
-                left: -55%;          
-            }
-            &.hideBefore::before{
-                content: none;
-            }
-            &.hideAfter::after{
-                content: none;
-            }
             &.stack{
                 width: 20vw;
-                height: 7vh;
+                height: 80px;
             }
             &.queue{
                 width: 7.5vw;
@@ -158,13 +124,6 @@ nav{
             &.list{
                 width: 5rem;
                 height: 5rem;
-            }
-            &.list::before{
-                content:  attr(data-before);
-                position: relative;
-                top: -3.5rem;
-                width: 0;
-                color: black;
             }
         }
         .error{
