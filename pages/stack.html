@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main.css">
     <title>ADT</title>
-    
+
 </head>
+
 <body>
     <nav>
         <a class="navhome" href="../index.html">Domů</a>
         <div class="dropdown">
             <button onclick="menu()">Zásobník</button>
             <div class="dropdown-options hidden">
-              <a href="./stack.html">Zásobník</a>
-              <a href="./queue.html">Fronta</a>
-              <a href="./set.html">Množina</a>
-              <a href="./list.html">Seznam</a>
+                <a href="./stack.html">Zásobník</a>
+                <a href="./queue.html">Fronta</a>
+                <a href="./set.html">Množina</a>
+                <a href="./list.html">Seznam</a>
             </div>
-          </div>
+        </div>
     </nav>
     <div class="app">
         <div class="animation" id="anim">
+            <img id="inArrow" src="../images/arrow-narrow-right-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
                 <div id="stack"></div>
                 <div class="error stack"></div>
             </div>
-            </div>
+            <img id="outArrow" src="../images/arrow-narrow-left-svgrepo-com.svg" alt="redArrow">
+        </div>
         <div class="tabs">
             <div class="tabs__btns">
-                <button class="btn active" id="controll" >Vizualizace</button>
-                <button class="btn" id="desc" >Popis</button>
-                <button class="btn" id="complexity" >Komplexita</button>
-                <button class="btn" id="code">Kód</button>
+                <button class="btn active" data-tab="controll">Vizualizace</button>
+                <button class="btn" data-tab="desc">Popis</button>
+                <button class="btn" data-tab="complexity">Komplexita</button>
+                <button class="btn" data-tab="code">Kód</button>
             </div>
             <div class="tabs__panels">
                 <div id="controll" class="content active">
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl in" onclick="sPush()">Push</button>
-                        <button class="ctrl out" onclick="sPop()">Pop</button>
+                        <button class="ctrl in" onclick="stackPush()">Push</button>
+                        <button class="ctrl out" onclick="stackPop()">Pop</button>
                     </div>
                 </div>
                 <div id="desc" class="content">
@@ -50,7 +54,7 @@
                             <li>LIFO (last in, first out)</li>
                             <li>přístup pouze k vrcholu</li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="complexity" class="content">
                     <div class="container">
@@ -59,7 +63,7 @@
                             <li>Přidání: O(1)</li>
                             <li>Odebrání: O(1)</li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="code" class="content">
                     <div class="container">
@@ -69,7 +73,8 @@
             </div>
         </div>
     </div>
-</body>
-<script src="../main.js"></script>
+    <script src="../main.js"></script>
     <script src="../scripts/stack.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+</body>
 </html>
