@@ -10,104 +10,144 @@ var animating = false;
 var greenArrow = document.getElementById('inArrow');
 var redArrow = document.getElementById('outArrow');
 var stackElem = document.getElementById('stack');
-
+const defaultEase = "power2.out";
+const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
     gsap.set(greenArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 })
     gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 0 })
 })
 function stackPush() {
-    if (!animating) {
-        animating = true;
-        if (stack.length < stackSize) {
-            if (inputval) {
-                stack.push(inputval);
-                //-------- create element ------------------
-                const elem = document.createElement('div');
-                elem.textContent = inputval;
-                elem.id = stack.length;
-                elem.classList.add('data');
-                elem.classList.add('stack');
-                elem.style.order = stackSize - stack.length;
-                stackElem.appendChild(elem);
-                var pos = elem.style.top;
-                gsap.set(elem, { y: -500, opacity: 1 });
+    if (animating) return;
 
-                gsap.to(elem, {
-                    y: pos,
-                    duration: 0.5,
-                    ease: "power2.out",
-                });
-                if(stack.length === stackSize){
-                    gsap.to(greenArrow, {
-                        y: stackElem.getBoundingClientRect().height - (stack.length * elem.offsetHeight) - 2,
-                        duration: 0.25,
-                        opacity: 0,
-                        ease: "power2.out"
-                    });
-                }else{
-                    gsap.to(greenArrow, {
-                        y: stackElem.getBoundingClientRect().height - (stack.length * elem.offsetHeight) - 2,
-                        duration: 0.25,
-                        ease: "power2.out"
-                    });
+    if (stack.length < stackSize) {
+        if (inputval) {
+            animating = true;
+            stack.push(inputval);
+            //-------- create element ------------------
+            const elem = document.createElement('div');
+            elem.textContent = inputval;
+            elem.id = stack.length;
+            elem.classList.add('data');
+            elem.classList.add('stack');
+            elem.style.order = stackSize - stack.length;
+            stackElem.appendChild(elem);
+            gsap.set(elem, { y: -500, opacity: 1 });
+            stackHeight = stackElem.getBoundingClientRect().height;
+            let tl = gsap.timeline({
+                onComplete:()=>{
+                    animating = false;
                 }
-                
-                gsap.to(redArrow, {
-                    y: stackElem.getBoundingClientRect().height - ((stack.length - 1) * elem.offsetHeight) - 2,
+            });
+            tl.to(elem, {
+                y: 0,
+                duration: defaultDuration,
+                ease: defaultEase,
+            }).to(greenArrow, {
+                y: stackHeight - (stack.length * elem.offsetHeight) - 2,
+                duration: defaultDuration,
+                opacity: stack.length === stackSize ? 0 : 1,
+                ease: defaultEase
+            }).to(redArrow,{
+                y: stackHeight - ((stack.length - 1) * elem.offsetHeight) - 2,
+                duration: defaultDuration,
+                opacity: 1,
+                ease: defaultEase,
+            },"<")
+            /*gsap.to(elem, {
+                y: 0,
+                duration: 0.5,
+                ease: "power2.out",
+            });
+            if (stack.length === stackSize) {
+                gsap.to(greenArrow, {
+                    y: stackHeight - (stack.length * elem.offsetHeight) - 2,
                     duration: 0.25,
-                    opacity: 1,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        animating = false;
-                    }
+                    opacity: 0,
+                    ease: "power2.out"
                 });
-                animating = false;
+            } else {
+                gsap.to(greenArrow, {
+                    y: stackHeight - (stack.length * elem.offsetHeight) - 2,
+                    duration: 0.25,
+                    ease: "power2.out"
+                });
             }
-        }
 
-        else {
-            if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
-                errorFullDisplayed = true;
-                err.textContent = "Stack is full";
-                err.style.display = 'flex';
-                setTimeout(() => {
-                    err.style.display = 'none';
-                }, 1000);
-                errorFullDisplayed = false;
-            }
+            gsap.to(redArrow, {
+                y: stackHeight - ((stack.length - 1) * elem.offsetHeight) - 2,
+                duration: 0.25,
+                opacity: 1,
+                ease: "power2.out",
+                onComplete: () => {
+                    animating = false;
+                }
+            });*/
         }
-
     }
+
+    else {
+        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
+            errorFullDisplayed = true;
+            err.textContent = "Stack is full";
+            err.style.display = 'flex';
+            setTimeout(() => {
+                err.style.display = 'none';
+                errorFullDisplayed = false;
+            }, 1000);
+
+        }
+    }
+
 }
 
 function stackPop() {
+    if (animating) return;
+
     if (stack.length > 0) {
-        
-        /*document.getElementById('stack').removeChild(document.getElementById(stack.length));
+        animating = true;
+        stackHeight = stackElem.getBoundingClientRect().height;
+        var elem = document.getElementById(stack.length);
         stack.pop();
-        if (stack.length > 0) {
-            document.getElementById(`${stack.length}`).classList.remove("hideBefore");
-            document.getElementById(`${stack.length}`).classList.remove("hideAfter");
-        }*/
-        var elem = document.getElementById(stack.length)
-        console.log(elem)
-        gsap.to(elem, {
+        let tl = gsap.timeline(
+            {
+                onComplete: () => {
+                    stackElem.removeChild(elem);
+                    animating = false;
+                }
+            }
+        );
+        tl.to(elem, {
+            y: -500,
+            duration: 0.5,
+            ease: "power2.out"
+        }).to(greenArrow, {
+            y: `+=${elem.offsetHeight + 2}`,
+            duration: 0.25,
+            opacity: 1,
+            ease: "power2.out"
+        }, "<").to(redArrow, {
+            y: `+=${elem.offsetHeight + 2}`,
+            duration: 0.25,
+            opacity: stack.length === 0 ? 0 : 1,
+            ease: "power2.out",
+        }, "<")
+        /*gsap.to(elem, {
             y: -500,
             duration: 0.5,
             ease: "power2.out",
         });
         gsap.to(greenArrow, {
-            y: "+=80",
+            y: `+=${elem.offsetHeight + 2}`,
             duration: 0.25,
             opacity: 1,
             ease: "power2.out"
         });
-        
-        
-        if(stack.length === 1){
+
+
+        if (stack.length === 1) {
             gsap.to(redArrow, {
-                y: "+=80",
+                y: `+=${elem.offsetHeight + 2}`,
                 duration: 0.25,
                 opacity: 0,
                 ease: "power2.out",
@@ -115,9 +155,9 @@ function stackPop() {
                     animating = false;
                 }
             });
-        }else{
+        } else {
             gsap.to(redArrow, {
-                y: "+=80",
+                y: `+=${elem.offsetHeight + 2}`,
                 duration: 0.25,
                 opacity: 1,
                 ease: "power2.out",
@@ -125,9 +165,8 @@ function stackPop() {
                     animating = false;
                 }
             });
-        }
-        stackElem.removeChild(elem);
-        stack.pop();
+        }*/
+
 
     }
     else {
@@ -137,11 +176,13 @@ function stackPop() {
             err.style.display = 'flex';
             setTimeout(() => {
                 err.style.display = 'none';
+                errorEmptyDisplayed = false;
             }, 1000);
-            errorEmptyDisplayed = false;
+
         }
     }
 }
+
 //------------------------------------
 //onchange
 function changeValue() {
