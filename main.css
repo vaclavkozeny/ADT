@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -82,7 +83,7 @@ nav {
   gap: 2px;
 }
 .app .animation #queue {
-  width: 40vw;
+  width: 30vw;
   height: 15vh;
   border-bottom: 2px solid black;
   border-top: 2px solid black;
@@ -115,11 +116,11 @@ nav {
   color: white;
 }
 .app .animation .data.stack {
-  width: 20vw;
+  width: 100%;
   height: 80px;
 }
 .app .animation .data.queue {
-  width: 7.5vw;
+  width: 80px;
   height: 100%;
 }
 .app .animation .data.set {

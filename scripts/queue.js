@@ -6,67 +6,124 @@ var input = document.getElementById("inpt");
 var err = document.getElementsByClassName('error')[0];
 var errorFullDisplayed = false;
 var errorEmptyDisplayed = false;
+var greenArrow = document.getElementById('inArrow');
+var redArrow = document.getElementById('outArrow');
+var queueElem = document.getElementById('queue');
+var myId = 0;
+var animating = false;
+const defaultEase = "power2.out";
+const defaultDuration = 0.5;
 
-function enqueue(){
-    if(queue.length < queueSize){
-        if(inputval){
-            queue.push(inputval);
+document.addEventListener('DOMContentLoaded', () => {
+    let rec = queueElem.getBoundingClientRect();
+    gsap.set(redArrow, { x: -rec.width, y: rec.top + redArrow.offsetHeight * 1.5, opacity: 0 })
+    gsap.set(greenArrow, { x: greenArrow.offsetWidth, y: rec.top - rec.height + (greenArrow.offsetHeight * 0.25) })
+})
+
+function enqueue() {
+    if (animating) return;
+    if (queue.length < queueSize) {
+        if (inputval) {
+            animating = true;
+            myId++;
+            var elem = document.createElement('div');
+            elem.textContent = inputval;
+            elem.id = myId;
+            elem.classList.add('data');
+            elem.classList.add('queue');
+            queueElem.appendChild(elem);
+            queue.push(elem);
+            gsap.set(elem, { y: -500, x: 450 - (queue.length * (elem.offsetWidth + 2)), opacity: 1 });
+            let tl = gsap.timeline({
+                onComplete: () => {
+                    animating = false;
+                }
+            });
+            tl.to(elem, {
+                y: 0,
+                duration: defaultDuration,
+                ease: defaultEase,
+            }).to(elem, {
+                x: 0,
+                duration: defaultDuration,
+                ease: defaultEase
+            }).to(greenArrow, {
+                x: (queue.length + 1) * (elem.offsetWidth + 2),
+                duration: defaultDuration,
+                ease: defaultEase,
+                opacity: queue.length === queueSize - 1 ? 0 : 1
+            }).to(redArrow,{
+               opacity: queue.length === 0 ? 0:1,
+               duration: defaultDuration,
+               ease: defaultEase 
+            },"<")
         }
-        redraw();
-    }else{
-        if(errorEmptyDisplayed === false && errorFullDisplayed === false){
+    } else {
+        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
             errorFullDisplayed = true;
             err.textContent = "Queue is full";
             err.style.display = 'flex';
             setTimeout(() => {
                 err.style.display = 'none';
-            }, 1000); 
-            errorFullDisplayed = false;
-        }
-    }
-    
+                errorFullDisplayed = false;
+            }, 1000);
 
-}
-function redraw(){
-    const q = document.getElementById('queue');
-    while (q.firstChild) {
-        q.removeChild(q.firstChild);
+        }
     }
-    queue.map((item, index)=>{
-        const elem = document.createElement('div');
-        elem.textContent = item;
-        elem.id = index;
-        elem.classList.add('data');
-        elem.classList.add('queue');
-        if(index != queue.length-1){
-            elem.classList.add('hideBefore');
-        }
-        if(index === 0){
-            elem.classList.add('first');
-        }
-        if(index === queueSize-1){
-            elem.classList.add('hideBefore');
-        }
-        q.appendChild(elem);
-    })
 }
-function dequeue(){
-    if(queue.length > 0){
-        queue.shift();
-        redraw();
-    }else{
-        if(errorEmptyDisplayed === false && errorFullDisplayed === false){
+
+function dequeue() {
+    if (animating) return;
+    if (queue.length > 0) {
+        animating = true;
+        var elem = queue[0];
+        console.log(elem)
+        let tl = gsap.timeline({
+            onComplete: () => {
+                gsap.to(greenArrow, {
+                    x: queue.length * (elem.offsetWidth + 2),
+                    duration: 0.5,
+                    ease: "power2.out",
+                    opacity: 1
+                });
+                elem.remove();
+                queue.shift();
+                gsap.to(redArrow,{
+                    opacity: queue.length === 0 ? 0:1,
+                    duration: defaultDuration,
+                    ease: defaultEase
+                })
+                animating = false;
+            }
+        });
+        tl.to(elem, {
+            x: -100,
+            duration: 0.5,
+            ease: "power2.out",
+        }).to(elem, {
+            y: -500,
+            duration: 0.5,
+            ease: "power2.out",
+        })
+
+
+
+
+    } else {
+        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
             errorEmptyDisplayed = true;
             err.textContent = "Queue is empty";
             err.style.display = 'flex';
             setTimeout(() => {
                 err.style.display = 'none';
-            }, 1000); 
-            errorEmptyDisplayed = false;
+                errorEmptyDisplayed = false;
+            }, 1000);
+
         }
     }
+
 }
-function changeValue(){
+function changeValue() {
     inputval = input.value;
 }
 
