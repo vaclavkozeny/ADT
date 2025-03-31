@@ -1,11 +1,10 @@
 var inputval;
 var stacksize;
 var input = document.getElementById('inpt');
-var err = document.getElementsByClassName('error')[0];
+var err = document.getElementById('error');
 const stackSize = 5;
 var stack = [];
-var errorFullDisplayed = false;
-var errorEmptyDisplayed = false;
+var errorDisplayed = false;
 var animating = false;
 var greenArrow = document.getElementById('inArrow');
 var redArrow = document.getElementById('outArrow');
@@ -14,8 +13,9 @@ const defaultEase = "power2.out";
 const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
-    gsap.set(greenArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 })
-    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 0 })
+    gsap.set(greenArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 });
+    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 0 });
+    gsap.set(err,{opacity:0})
 })
 function stackPush() {
     if (animating) return;
@@ -54,49 +54,11 @@ function stackPush() {
                 opacity: 1,
                 ease: defaultEase,
             },"<")
-            /*gsap.to(elem, {
-                y: 0,
-                duration: 0.5,
-                ease: "power2.out",
-            });
-            if (stack.length === stackSize) {
-                gsap.to(greenArrow, {
-                    y: stackHeight - (stack.length * elem.offsetHeight) - 2,
-                    duration: 0.25,
-                    opacity: 0,
-                    ease: "power2.out"
-                });
-            } else {
-                gsap.to(greenArrow, {
-                    y: stackHeight - (stack.length * elem.offsetHeight) - 2,
-                    duration: 0.25,
-                    ease: "power2.out"
-                });
-            }
-
-            gsap.to(redArrow, {
-                y: stackHeight - ((stack.length - 1) * elem.offsetHeight) - 2,
-                duration: 0.25,
-                opacity: 1,
-                ease: "power2.out",
-                onComplete: () => {
-                    animating = false;
-                }
-            });*/
         }
     }
 
     else {
-        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
-            errorFullDisplayed = true;
-            err.textContent = "Stack is full";
-            err.style.display = 'flex';
-            setTimeout(() => {
-                err.style.display = 'none';
-                errorFullDisplayed = false;
-            }, 1000);
-
-        }
+        error('Stack is full');
     }
 
 }
@@ -132,54 +94,11 @@ function stackPop() {
             opacity: stack.length === 0 ? 0 : 1,
             ease: "power2.out",
         }, "<")
-        /*gsap.to(elem, {
-            y: -500,
-            duration: 0.5,
-            ease: "power2.out",
-        });
-        gsap.to(greenArrow, {
-            y: `+=${elem.offsetHeight + 2}`,
-            duration: 0.25,
-            opacity: 1,
-            ease: "power2.out"
-        });
-
-
-        if (stack.length === 1) {
-            gsap.to(redArrow, {
-                y: `+=${elem.offsetHeight + 2}`,
-                duration: 0.25,
-                opacity: 0,
-                ease: "power2.out",
-                onComplete: () => {
-                    animating = false;
-                }
-            });
-        } else {
-            gsap.to(redArrow, {
-                y: `+=${elem.offsetHeight + 2}`,
-                duration: 0.25,
-                opacity: 1,
-                ease: "power2.out",
-                onComplete: () => {
-                    animating = false;
-                }
-            });
-        }*/
 
 
     }
     else {
-        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
-            errorEmptyDisplayed = true;
-            err.textContent = "Stack is empty";
-            err.style.display = 'flex';
-            setTimeout(() => {
-                err.style.display = 'none';
-                errorEmptyDisplayed = false;
-            }, 1000);
-
-        }
+        error('Stack is empty')
     }
 }
 
@@ -189,3 +108,25 @@ function changeValue() {
     inputval = input.value;
 }
 
+function error(str) {
+    if (errorDisplayed) return;
+    errorDisplayed = true;
+
+    err.textContent = str
+    var tl = gsap.timeline(
+        {
+            onComplete: () => {
+                errorDisplayed = false;
+            }
+        }
+    );
+    tl.to(err, {
+        opacity: 1,
+        duration: 0.5,
+        ease: defaultEase
+    }).to(err, {
+        opacity: 0,
+        duration: 2,
+        ease: defaultEase
+    })
+}

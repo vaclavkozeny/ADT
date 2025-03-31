@@ -78,7 +78,7 @@ nav{
             gap: 2px;
         }
         #queue{
-            width: 30vw;
+            width: 420px;
             height: 15vh;
             border-bottom: 2px solid black;
             border-top: 2px solid black;
@@ -127,15 +127,12 @@ nav{
                 height: 5rem;
             }
         }
-        .error{
+        #error{
             width: 20vw;
             border: 1px solid $outRed;
-            display: none;
             justify-content: center;
             margin-top: 5vh;
-            &.queue{
-                align-self: center;
-            }
+            text-align: center;
         }
     }
     .tabs{
