@@ -3,9 +3,8 @@ const queueSize = 5;
 var queue = [];
 var i = 0;
 var input = document.getElementById("inpt");
-var err = document.getElementsByClassName('error')[0];
-var errorFullDisplayed = false;
-var errorEmptyDisplayed = false;
+var err = document.getElementById('error');
+var errorDisplayed = false;
 var greenArrow = document.getElementById('inArrow');
 var redArrow = document.getElementById('outArrow');
 var queueElem = document.getElementById('queue');
@@ -16,8 +15,9 @@ const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
     let rec = queueElem.getBoundingClientRect();
-    gsap.set(redArrow, { x: -rec.width, y: rec.top + redArrow.offsetHeight * 1.5, opacity: 0 })
-    gsap.set(greenArrow, { x: greenArrow.offsetWidth, y: rec.top - rec.height + (greenArrow.offsetHeight * 0.25) })
+    gsap.set(redArrow, { x: -rec.width, y: rec.top + redArrow.offsetHeight * 1.5, opacity: 0 });
+    gsap.set(greenArrow, { x: greenArrow.offsetWidth, y: rec.top - rec.height + (greenArrow.offsetHeight * 0.25) });
+    gsap.set(err,{opacity:0})
 })
 
 function enqueue() {
@@ -33,7 +33,7 @@ function enqueue() {
             elem.classList.add('queue');
             queueElem.appendChild(elem);
             queue.push(elem);
-            gsap.set(elem, { y: -500, x: 450 - (queue.length * (elem.offsetWidth + 2)), opacity: 1 });
+            gsap.set(elem, { y: -500, x: queueElem.getBoundingClientRect().right - (queue.length * (elem.offsetWidth + 2)), opacity: 1 });
             let tl = gsap.timeline({
                 onComplete: () => {
                     animating = false;
@@ -51,24 +51,15 @@ function enqueue() {
                 x: (queue.length + 1) * (elem.offsetWidth + 2),
                 duration: defaultDuration,
                 ease: defaultEase,
-                opacity: queue.length === queueSize - 1 ? 0 : 1
-            }).to(redArrow,{
-               opacity: queue.length === 0 ? 0:1,
-               duration: defaultDuration,
-               ease: defaultEase 
-            },"<")
+                opacity: queue.length === queueSize ? 0 : 1
+            }).to(redArrow, {
+                opacity: queue.length === 0 ? 0 : 1,
+                duration: defaultDuration,
+                ease: defaultEase
+            }, "<")
         }
     } else {
-        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
-            errorFullDisplayed = true;
-            err.textContent = "Queue is full";
-            err.style.display = 'flex';
-            setTimeout(() => {
-                err.style.display = 'none';
-                errorFullDisplayed = false;
-            }, 1000);
-
-        }
+        error("Queue is full")
     }
 }
 
@@ -88,8 +79,8 @@ function dequeue() {
                 });
                 elem.remove();
                 queue.shift();
-                gsap.to(redArrow,{
-                    opacity: queue.length === 0 ? 0:1,
+                gsap.to(redArrow, {
+                    opacity: queue.length === 0 ? 0 : 1,
                     duration: defaultDuration,
                     ease: defaultEase
                 })
@@ -110,20 +101,33 @@ function dequeue() {
 
 
     } else {
-        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
-            errorEmptyDisplayed = true;
-            err.textContent = "Queue is empty";
-            err.style.display = 'flex';
-            setTimeout(() => {
-                err.style.display = 'none';
-                errorEmptyDisplayed = false;
-            }, 1000);
-
+        error('Queue is empty')
         }
-    }
 
 }
 function changeValue() {
     inputval = input.value;
 }
 
+function error(str) {
+    if (errorDisplayed) return;
+    errorDisplayed = true;
+
+    err.textContent = str
+    var tl = gsap.timeline(
+        {
+            onComplete: () => {
+                errorDisplayed = false;
+            }
+        }
+    );
+    tl.to(err, {
+        opacity: 1,
+        duration: 0.5,
+        ease: defaultEase
+    }).to(err, {
+        opacity: 0,
+        duration: 2,
+        ease: defaultEase
+    })
+}

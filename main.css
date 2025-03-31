@@ -83,7 +83,7 @@ nav {
   gap: 2px;
 }
 .app .animation #queue {
-  width: 30vw;
+  width: 420px;
   height: 15vh;
   border-bottom: 2px solid black;
   border-top: 2px solid black;
@@ -132,15 +132,12 @@ nav {
   width: 5rem;
   height: 5rem;
 }
-.app .animation .error {
+.app .animation #error {
   width: 20vw;
   border: 1px solid rgb(245, 90, 90);
-  display: none;
   justify-content: center;
   margin-top: 5vh;
-}
-.app .animation .error.queue {
-  align-self: center;
+  text-align: center;
 }
 .app .tabs {
   width: 50vw;

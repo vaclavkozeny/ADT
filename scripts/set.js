@@ -1,22 +1,34 @@
 var inputOutputValue;
-const setSize = 20;
+const setSize = 5;
 var set = [];
 var input = document.getElementById("inpt");
 var err = document.getElementsByClassName('error')[0];
 
 function setAdd() {
-    if (inputOutputValue && set.length < setSize && !(set.includes(inputOutputValue))) {
-        set.push(inputOutputValue);
-        redraw();
+    if (inputOutputValue && set.length < setSize) {
+        if(!(set.includes(inputOutputValue))){
+            set.push(inputOutputValue);
+            redraw();
+        }else{
+            err.textContent = ""
+        }
+        
     }
     else {
-        err.textContent = "Value is not unique";
-        err.style.display = 'flex';
-        setTimeout(() => {
-            err.style.display = 'none';
-        }, 1000);
+        err.textContent = "Set is full";
     }
+    if (err.textContent != "") {
+        if (errorEmptyDisplayed === false && errorFullDisplayed === false) {
+            errorFullDisplayed = true;
+            err.textContent = "Queue is full";
+            err.style.display = 'flex';
+            setTimeout(() => {
+                err.style.display = 'none';
+                errorFullDisplayed = false;
+            }, 1000);
 
+        }
+    }
 
 }
 function redraw() {
