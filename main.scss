@@ -98,9 +98,12 @@ nav{
             margin-top: 10vh;
         }
         #list{
+            width: 450px;
+            height: 80px;
             display: flex;
             margin-top: 10rem;
             gap: 10px;
+            border: solid 1px black;
         }
         .data{
             background-color: $active;
@@ -123,8 +126,8 @@ nav{
                 height: 5vh;
             }
             &.list{
-                width: 5rem;
-                height: 5rem;
+                width: 80px;
+                height: 80px;
             }
         }
         #error{
