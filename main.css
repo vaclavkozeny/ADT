@@ -103,9 +103,12 @@ nav {
   margin-top: 10vh;
 }
 .app .animation #list {
+  width: 450px;
+  height: 80px;
   display: flex;
   margin-top: 10rem;
   gap: 10px;
+  border: solid 1px black;
 }
 .app .animation .data {
   background-color: rgb(119, 89, 168);
@@ -129,8 +132,8 @@ nav {
   height: 5vh;
 }
 .app .animation .data.list {
-  width: 5rem;
-  height: 5rem;
+  width: 80px;
+  height: 80px;
 }
 .app .animation #error {
   width: 20vw;

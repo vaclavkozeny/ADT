@@ -15,8 +15,17 @@ const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
     let rec = queueElem.getBoundingClientRect();
-    gsap.set(redArrow, { x: -rec.width, y: rec.top + redArrow.offsetHeight * 1.5, opacity: 0 });
-    gsap.set(greenArrow, { x: greenArrow.offsetWidth, y: rec.top - rec.height + (greenArrow.offsetHeight * 0.25) });
+    let greenRect = greenArrow.getBoundingClientRect();
+    let redRect = redArrow.getBoundingClientRect();
+    gsap.set(greenArrow, { 
+        x: rec.x - greenRect.x, 
+        y: rec.top - greenRect.y - greenRect.height 
+    });
+    gsap.set(redArrow, { 
+        x: rec.x - redRect.x, 
+        y: (rec.bottom - redRect.y),
+        opacity: 0
+    });
     gsap.set(err,{opacity:0})
 })
 
@@ -109,25 +118,3 @@ function changeValue() {
     inputval = input.value;
 }
 
-function error(str) {
-    if (errorDisplayed) return;
-    errorDisplayed = true;
-
-    err.textContent = str
-    var tl = gsap.timeline(
-        {
-            onComplete: () => {
-                errorDisplayed = false;
-            }
-        }
-    );
-    tl.to(err, {
-        opacity: 1,
-        duration: 0.5,
-        ease: defaultEase
-    }).to(err, {
-        opacity: 0,
-        duration: 2,
-        ease: defaultEase
-    })
-}
