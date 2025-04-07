@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0
     });
     gsap.set(redArrow, {
-        x: rec.x - redRect.x - redRect.width,
         y: (rec.bottom - redRect.y),
-        //opacity: 0
+        opacity: 0
     });
     gsap.set(err, { opacity: 0 })
 })
@@ -37,9 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function listAdd() {
     if (animating) return;
+    inputValue = inputValueElem.value;
+    inputPosition = inputPositionElem.value;
     let rec = listElem.getBoundingClientRect();
     let greenRect = greenArrow.getBoundingClientRect();
     const homeX = rec.x - greenRect.x - greenRect.width;
+    if(list.length === listSize){
+        error("List je plný");
+        return;
+    }
     if (inputValue && list.length < listSize && inputPosition === '') {
         animating = true;
         createDataElement(inputValue);
@@ -164,46 +169,6 @@ function listDelete() {
     deleteType = deleteTypeElem.value;
     if (animating) return;
     
-    let rec = listElem.getBoundingClientRect();
-    let redRect = redArrow.getBoundingClientRect();
-    const homeX = rec.x - redRect.x - redRect.width;
-    console.log(homeX)
-    if (deleteValue && deleteType === "Pozice") {
-        animating = true;
-        deleteValue = parseInt(deleteValue);
-        if(deleteValue > list.length){
-            error("Index je mimo");
-            animating = false;
-            return;
-        } 
-        var elem = list[deleteValue]
-        let tl = gsap.timeline({
-            onComplete: () => {
-                animating = false;
-                myId--;
-            }
-        })
-        tl.to(redArrow, {
-            x: ((deleteValue + 1) * 80) + (deleteValue * 10),
-            opacity: 1,
-            duration: defaultDuration,
-            ease: defaultEase
-        }).to(elem, {
-            y: -500,
-            duration: defaultDuration,
-            ease: defaultEase,
-            onComplete: () => {
-                listElem.removeChild(elem)
-                list.splice(deleteValue,1)
-            }
-        }).to(redArrow, {
-            opacity: 1,
-            duration: defaultDuration,
-        }).to(redArrow, {
-            x: 0,
-            duration: 0.1,
-        }, ">")
-    }
     else if (deleteValue && deleteType === "Hodnota" && list.some(div=>div.textContent.includes(deleteValue))) {
         console.log(animating);
         
@@ -217,7 +182,7 @@ function listDelete() {
             }
         })
         tl.to(redArrow, {
-            x: ((deleteValue + 1) * 80) + (deleteValue * 10),
+            x: -((listSize - deleteValue) * 80) - ((listSize - deleteValue) * 10),
             opacity: 1,
             duration: defaultDuration,
             ease: defaultEase
@@ -230,11 +195,47 @@ function listDelete() {
                 list.splice(deleteValue,1)
             }
         }).to(redArrow, {
-            opacity: 1,
+            opacity: 0,
             duration: defaultDuration,
         }).to(redArrow, {
-            x: homeX,
+            x: 0,
             duration: 0,
+        }, ">")
+    }
+    if (deleteValue && deleteType === "Pozice") {
+        animating = true;
+        deleteValue = parseInt(deleteValue);
+        if(deleteValue >= list.length){
+            error("Index je mimo");
+            animating = false;
+            return;
+        } 
+        var elem = list[deleteValue]
+        let tl = gsap.timeline({
+            onComplete: () => {
+                animating = false;
+                myId--;
+            }
+        })
+        tl.to(redArrow, {
+            x: -((listSize - deleteValue) * 80) - ((listSize - deleteValue) * 10),
+            opacity: 1,
+            duration: defaultDuration,
+            ease: defaultEase
+        }).to(elem, {
+            y: -500,
+            duration: defaultDuration,
+            ease: defaultEase,
+            onComplete: () => {
+                listElem.removeChild(elem)
+                list.splice(deleteValue,1)
+            }
+        }).to(redArrow, {
+            opacity: 0,
+            duration: defaultDuration,
+        }).to(redArrow, {
+            x: 0,
+            duration: 0.1,
         }, ">")
     }
 }
