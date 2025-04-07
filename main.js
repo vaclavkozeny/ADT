@@ -21,3 +21,25 @@ if(tabbtns && tabcontent){
         })
     })
 }
+function error(str) {
+    if (errorDisplayed) return;
+    errorDisplayed = true;
+
+    err.textContent = str
+    var tl = gsap.timeline(
+        {
+            onComplete: () => {
+                errorDisplayed = false;
+            }
+        }
+    );
+    tl.to(err, {
+        opacity: 1,
+        duration: 0.5,
+        ease: defaultEase
+    }).to(err, {
+        opacity: 0,
+        duration: 2,
+        ease: defaultEase
+    })
+}

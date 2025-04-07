@@ -14,7 +14,7 @@ const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
     gsap.set(greenArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 });
-    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 0 });
+    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 });
     gsap.set(err,{opacity:0})
 })
 function stackPush() {
@@ -25,7 +25,7 @@ function stackPush() {
             animating = true;
             stack.push(inputval);
             //-------- create element ------------------
-            const elem = document.createElement('div');
+            let elem = document.createElement('div');
             elem.textContent = inputval;
             elem.id = stack.length;
             elem.classList.add('data');
@@ -44,12 +44,12 @@ function stackPush() {
                 duration: defaultDuration,
                 ease: defaultEase,
             }).to(greenArrow, {
-                y: stackHeight - (stack.length * elem.offsetHeight) - 2,
+                y: `-=${elem.offsetHeight+2}`,
                 duration: defaultDuration,
                 opacity: stack.length === stackSize ? 0 : 1,
                 ease: defaultEase
             }).to(redArrow,{
-                y: stackHeight - ((stack.length - 1) * elem.offsetHeight) - 2,
+                y: `-=${stack.length === 1 ? 0 : (elem.offsetHeight + 2)}`,
                 duration: defaultDuration,
                 opacity: 1,
                 ease: defaultEase,
@@ -68,7 +68,6 @@ function stackPop() {
 
     if (stack.length > 0) {
         animating = true;
-        stackHeight = stackElem.getBoundingClientRect().height;
         var elem = document.getElementById(stack.length);
         stack.pop();
         let tl = gsap.timeline(
@@ -81,18 +80,21 @@ function stackPop() {
         );
         tl.to(elem, {
             y: -500,
-            duration: 0.5,
-            ease: "power2.out"
+            duration: defaultDuration,
+            ease: defaultEase
         }).to(greenArrow, {
             y: `+=${elem.offsetHeight + 2}`,
-            duration: 0.25,
+            duration: defaultDuration,
             opacity: 1,
-            ease: "power2.out"
+            ease: defaultEase
         }, "<").to(redArrow, {
-            y: `+=${elem.offsetHeight + 2}`,
-            duration: 0.25,
+            y: ()=>{
+                if(stack.length === 0) return stackElem.getBoundingClientRect().height;
+                return `+=${elem.offsetHeight + 2}`;
+            },
+            duration: defaultDuration,
             opacity: stack.length === 0 ? 0 : 1,
-            ease: "power2.out",
+            ease: defaultEase,
         }, "<")
 
 
@@ -106,27 +108,4 @@ function stackPop() {
 //onchange
 function changeValue() {
     inputval = input.value;
-}
-
-function error(str) {
-    if (errorDisplayed) return;
-    errorDisplayed = true;
-
-    err.textContent = str
-    var tl = gsap.timeline(
-        {
-            onComplete: () => {
-                errorDisplayed = false;
-            }
-        }
-    );
-    tl.to(err, {
-        opacity: 1,
-        duration: 0.5,
-        ease: defaultEase
-    }).to(err, {
-        opacity: 0,
-        duration: 2,
-        ease: defaultEase
-    })
 }
