@@ -36,10 +36,10 @@ function error(str) {
     tl.to(err, {
         opacity: 1,
         duration: 0.5,
-        ease: defaultEase
+        ease: "power2"
     }).to(err, {
         opacity: 0,
         duration: 2,
-        ease: defaultEase
+        ease: "power2"
     })
 }

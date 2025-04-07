@@ -101,6 +101,7 @@ nav {
   height: 40vh;
   border: black solid 2px;
   margin-top: 10vh;
+  display: block;
 }
 .app .animation #list {
   width: 450px;
@@ -128,8 +129,9 @@ nav {
 }
 .app .animation .data.set {
   padding: 5px;
-  width: 5vw;
-  height: 5vh;
+  width: 80px;
+  height: 80px;
+  position: absolute;
 }
 .app .animation .data.list {
   width: 80px;

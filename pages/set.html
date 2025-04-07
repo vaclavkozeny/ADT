@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main.css">
     <title>Set</title>
-    
+
 </head>
+
 <body>
     <nav>
         <a class="navhome" href="../index.html">Domů</a>
         <div class="dropdown">
             <button onclick="menu()">Množina</button>
             <div class="dropdown-options hidden">
-              <a href="./stack.html">Zásobník</a>
-              <a href="./queue.html">Fronta</a>
-              <a href="./set.html">Množina</a>
-              <a href="./list.html">Seznam</a>
+                <a href="./stack.html">Zásobník</a>
+                <a href="./queue.html">Fronta</a>
+                <a href="./set.html">Množina</a>
+                <a href="./list.html">Seznam</a>
             </div>
-          </div>
+        </div>
     </nav>
     <div class="app">
         <div class="animation" id="anim">
             <div id="appContainer">
                 <div id="set"></div>
-                <div class="error set"></div>
+                <div id="error"></div>
             </div>
         </div>
         <div class="tabs">
             <div class="tabs__btns">
-                <button class="btn active" data-tab="controll" >Vizualizace</button>
-                <button class="btn" data-tab="desc" >Popis</button>
-                <button class="btn" data-tab="complexity" >Komplexita</button>
+                <button class="btn active" data-tab="controll">Vizualizace</button>
+                <button class="btn" data-tab="desc">Popis</button>
+                <button class="btn" data-tab="complexity">Komplexita</button>
                 <button class="btn" data-tab="code">Kód</button>
             </div>
             <div class="tabs__panels">
@@ -39,7 +41,7 @@
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl in" onclick="setAdd()">Add</button>
+                        <button class="ctrl in" id="addBtn" >Add</button>
                         <button class="ctrl out" onclick="setDelete()">Delete</button>
                     </div>
                 </div>
@@ -47,9 +49,9 @@
                     <div class="container">
                         <h2>Množina</h2>
                         <ul>
-                            
+
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="complexity" class="content">
                     <div class="container">
@@ -58,7 +60,7 @@
                             <li>Přidání: O(1)</li>
                             <li>Odebrání: O(n)</li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="code" class="content">
 
@@ -68,5 +70,9 @@
     </div>
 </body>
 <script src="../main.js"></script>
-    <script src="../scripts/set.js"></script>
+<script src="../lib/physicsjs-full.js"></script>
+
+<script src="../scripts/set.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
 </html>
