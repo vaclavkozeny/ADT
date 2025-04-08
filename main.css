@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  align-items: center;
+  padding: 5px;
+}
+
+nav {
+  height: 2rem;
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-options {
+  display: block;
+  position: absolute;
+  overflow: auto;
+  background-color: rgb(212, 212, 212);
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.navhome {
+  font-size: large;
+  margin-right: 2rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.app .animation {
+  width: 50vw;
+  height: 70vh;
+  border: 1px solid red;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.app .animation #appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.app .animation #stack {
+  width: 20vw;
+  height: 45vh;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 80px;
+  gap: 2px;
+}
+.app .animation #queue {
+  width: 420px;
+  height: 15vh;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+.app .animation #set {
+  display: flex;
+  width: 40vw;
+  height: 40vh;
+  border: black solid 2px;
+  margin-top: 10vh;
+  display: block;
+}
+.app .animation #list {
+  width: 450px;
+  height: 80px;
+  display: flex;
+  margin-top: 10rem;
+  gap: 10px;
+  border: solid 1px black;
+}
+.app .animation .data {
+  background-color: rgb(119, 89, 168);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.app .animation .data.stack {
+  width: 100%;
+  height: 80px;
+}
+.app .animation .data.queue {
+  width: 80px;
+  height: 100%;
+}
+.app .animation .data.set {
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+.app .animation .data.list {
+  width: 80px;
+  height: 80px;
+}
+.app .animation #error {
+  width: 20vw;
+  border: 1px solid rgb(245, 90, 90);
+  justify-content: center;
+  margin-top: 5vh;
+  text-align: center;
+}
+.app .tabs {
+  width: 50vw;
+  border: 1px solid red;
+}
+.app .tabs .tabs__panels .inputRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.app .tabs .tabs__panels .inputRow.delete {
+  justify-content: flex-start;
+}
+.app .tabs .tabs__panels .inputBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.app .tabs .tabs__panels .inputBox .ctrl {
+  height: 100%;
+}
+.app .tabs .tabs__panels .inputBox input {
+  height: 100%;
+}
+.app .tabs .container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+.app .tabs .tabs__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.app .tabs .btn {
+  color: rgb(212, 212, 212);
+  background-color: transparent;
+  border: none;
+  font-size: large;
+}
+.app .tabs .btn.active {
+  color: rgb(119, 89, 168);
+}
+.app .tabs .ctrl {
+  width: 8vw;
+  height: 3vh;
+  border-radius: 7px;
+}
+.app .tabs .ctrl.in {
+  background-color: rgb(96, 219, 65);
+}
+.app .tabs .ctrl.out {
+  background-color: rgb(245, 90, 90);
+}
+.app .tabs #inpt {
+  width: 8vw;
+  height: 3vh;
+}
+.app .tabs__panels > div {
+  width: 100%;
+  display: none;
+}
+.app .tabs__panels > div.active {
+  display: flex;
+}/*# sourceMappingURL=main.css.map */
