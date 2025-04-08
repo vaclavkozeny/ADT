@@ -16,7 +16,7 @@ jobs:
       - name: Prepare deployment directory
         run: |
           mkdir deploy
-          cp -r index.html main.css main.js images pages scripts deploy/ lib/
+          cp -r index.html main.css main.js images pages scripts lib deploy/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
