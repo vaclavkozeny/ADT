@@ -3,13 +3,13 @@ function menu(){
     const menus = document.querySelectorAll('.dropdown-options');
     menus.forEach(m=>m.classList.toggle('hidden'))
 }
-var tabbtns = document.querySelectorAll(".btn");
-var tabcontent = document.querySelectorAll(".content");
+let tabbtns = document.querySelectorAll(".btn");
+let tabcontent = document.querySelectorAll(".content");
 
 if(tabbtns && tabcontent){
     tabbtns.forEach(b=>{
         b.addEventListener('click',()=>{
-            var tabid = b.getAttribute('data-tab');
+            let tabid = b.getAttribute('data-tab');
             tabbtns.forEach(bt=>{bt.classList.remove('active')});
             b.classList.add('active');
             tabcontent.forEach(c=>{
@@ -26,7 +26,7 @@ function error(str) {
     errorDisplayed = true;
 
     err.textContent = str
-    var tl = gsap.timeline(
+    let tl = gsap.timeline(
         {
             onComplete: () => {
                 errorDisplayed = false;
