@@ -35,7 +35,7 @@ function error(str) {
     );
     tl.to(err, {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
         ease: "power2"
     }).to(err, {
         opacity: 0,
