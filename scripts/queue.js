@@ -1,15 +1,14 @@
-var inputval;
+let inputval;
 const queueSize = 5;
-var queue = [];
-var i = 0;
-var input = document.getElementById("inpt");
-var err = document.getElementById('error');
-var errorDisplayed = false;
-var greenArrow = document.getElementById('inArrow');
-var redArrow = document.getElementById('outArrow');
-var queueElem = document.getElementById('queue');
-var myId = 0;
-var animating = false;
+let queue = [];
+const input = document.getElementById("inpt");
+const err = document.getElementById('error');
+let errorDisplayed = false;
+const greenArrow = document.getElementById('inArrow');
+const redArrow = document.getElementById('outArrow');
+const queueElem = document.getElementById('queue');
+let myId = 0;
+let animating = false;
 const defaultEase = "power2.out";
 const defaultDuration = 0.5;
 
@@ -35,7 +34,7 @@ function enqueue() {
         if (inputval) {
             animating = true;
             myId++;
-            var elem = document.createElement('div');
+            let elem = document.createElement('div');
             elem.textContent = inputval;
             elem.id = myId;
             elem.classList.add('data');
@@ -76,8 +75,7 @@ function dequeue() {
     if (animating) return;
     if (queue.length > 0) {
         animating = true;
-        var elem = queue[0];
-        console.log(elem)
+        let elem = queue[0];
         let tl = gsap.timeline({
             onComplete: () => {
                 gsap.to(greenArrow, {

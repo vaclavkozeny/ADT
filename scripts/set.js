@@ -114,7 +114,7 @@ Physics(function (world) {
             if (other.treatment === 'dynamic') {
                 //console.log("Postrkuji těleso:", other.id);
                 other.state.vel.y += 0.1 + Math.random() * 0.05;
-                world.step(0)
+                world.step(0);
             }
         });
 
