@@ -1,20 +1,20 @@
-var inputValue;
-var inputPosition;
-var deleteValue;
-var deleteType;
-var inputValueElem = document.getElementById("inpt_addValue");
-var inputPositionElem = document.getElementById("inpt_addPosition");
-var deleteElem = document.getElementById("inpt_delete");
-var deleteTypeElem = document.getElementById('deleteType');
-var err = document.getElementById('error');
-var greenArrow = document.getElementById('inArrow');
-var redArrow = document.getElementById('outArrow');
-var listElem = document.getElementById('list');
-var myId = 0;
-var animating = false;
+let inputValue;
+let inputPosition;
+let deleteValue;
+let deleteType;
+const inputValueElem = document.getElementById("inpt_addValue");
+const inputPositionElem = document.getElementById("inpt_addPosition");
+const deleteElem = document.getElementById("inpt_delete");
+const deleteTypeElem = document.getElementById('deleteType');
+const err = document.getElementById('error');
+const greenArrow = document.getElementById('inArrow');
+const redArrow = document.getElementById('outArrow');
+const listElem = document.getElementById('list');
+let myId = 0;
+let animating = false;
 const defaultEase = "power2.out";
 const defaultDuration = 0.5;
-var list = [];
+let list = [];
 const listSize = 5;
 errorDisplayed = false;
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,7 +112,6 @@ function listAdd() {
         } else {
             let referenceNode = listElem.children[inputPosition];
             let elems = list.slice(inputPosition + 1);
-            console.log(elems)
             let tl = gsap.timeline({
                 onComplete: () => {
                     animating = false;
@@ -170,11 +169,10 @@ function listDelete() {
     if (animating) return;
     
     else if (deleteValue && deleteType === "Hodnota" && list.some(div=>div.textContent.includes(deleteValue))) {
-        console.log(animating);
         
         animating = true;
         deleteValue = list.findIndex(div=>div.textContent.includes(deleteValue))
-        var elem = list[deleteValue]
+        let elem = list[deleteValue]
         let tl = gsap.timeline({
             onComplete: () => {
                 animating = false;
@@ -210,7 +208,7 @@ function listDelete() {
             animating = false;
             return;
         } 
-        var elem = list[deleteValue]
+        let elem = list[deleteValue]
         let tl = gsap.timeline({
             onComplete: () => {
                 animating = false;

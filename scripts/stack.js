@@ -1,20 +1,20 @@
-var inputval;
-var stacksize;
-var input = document.getElementById('inpt');
-var err = document.getElementById('error');
+let inputval;
+let stacksize;
+const input = document.getElementById('inpt');
+const err = document.getElementById('error');
 const stackSize = 5;
-var stack = [];
-var errorDisplayed = false;
-var animating = false;
-var greenArrow = document.getElementById('inArrow');
-var redArrow = document.getElementById('outArrow');
-var stackElem = document.getElementById('stack');
+let stack = [];
+let errorDisplayed = false;
+let animating = false;
+const greenArrow = document.getElementById('inArrow');
+const redArrow = document.getElementById('outArrow');
+const stackElem = document.getElementById('stack');
 const defaultEase = "power2.out";
 const defaultDuration = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
     gsap.set(greenArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 });
-    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 1 });
+    gsap.set(redArrow, { y: stackElem.getBoundingClientRect().height, opacity: 0 });
     gsap.set(err,{opacity:0})
 })
 function stackPush() {
@@ -68,7 +68,7 @@ function stackPop() {
 
     if (stack.length > 0) {
         animating = true;
-        var elem = document.getElementById(stack.length);
+        let elem = document.getElementById(stack.length);
         stack.pop();
         let tl = gsap.timeline(
             {

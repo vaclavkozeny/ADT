@@ -40,6 +40,7 @@ nav {
   background-color: rgb(212, 212, 212);
   border-radius: 2px;
   margin-top: 5px;
+  z-index: 10;
 }
 
 .hidden {
@@ -110,6 +111,12 @@ nav {
   margin-top: 10rem;
   gap: 10px;
   border: solid 1px black;
+}
+.app .animation #network {
+  width: 600px;
+  height: 400px;
+  border: 1px black solid;
+  margin-top: 5rem;
 }
 .app .animation .data {
   background-color: rgb(119, 89, 168);
