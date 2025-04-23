@@ -52,15 +52,9 @@ nav {
   margin-right: 2rem;
 }
 
-.app {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
 .app .animation {
   width: 50vw;
   height: 70vh;
-  border: 1px solid red;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -73,7 +67,7 @@ nav {
 }
 .app .animation #stack {
   width: 20vw;
-  height: 45vh;
+  height: 48vh;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -151,10 +145,6 @@ nav {
   margin-top: 5vh;
   text-align: center;
 }
-.app .tabs {
-  width: 50vw;
-  border: 1px solid red;
-}
 .app .tabs .tabs__panels .inputRow {
   display: flex;
   flex-direction: row;
@@ -186,6 +176,10 @@ nav {
   align-items: center;
   gap: 2px;
 }
+.app .tabs .container input {
+  border: 2px solid black;
+  border-radius: 5px;
+}
 .app .tabs .tabs__btns {
   display: flex;
   flex-direction: row;
@@ -203,7 +197,6 @@ nav {
 }
 .app .tabs .ctrl {
   width: 8vw;
-  height: 3vh;
   border-radius: 7px;
 }
 .app .tabs .ctrl.in {
@@ -214,7 +207,6 @@ nav {
 }
 .app .tabs #inpt {
   width: 8vw;
-  height: 3vh;
 }
 .app .tabs__panels > div {
   width: 100%;
@@ -222,4 +214,10 @@ nav {
 }
 .app .tabs__panels > div.active {
   display: flex;
+}
+
+@media only screen and (min-width: 48rem) {
+  .app .tabs {
+    width: 50%;
+  }
 }/*# sourceMappingURL=main.css.map */
