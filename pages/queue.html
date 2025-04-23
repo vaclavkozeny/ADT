@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
     <title>ADT</title>
     
@@ -21,8 +22,8 @@
             </div>
           </div>
     </nav>
-    <div class="app">
-        <div class="animation" id="anim">
+    <div class="flex flex-col md:flex-row flex-wrap app">
+        <div class="animation w-full max-w-xs mx-auto" id="anim">
             <img id="inArrow" src="../images/arrow-narrow-down-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
                 <div id="queue"></div>
@@ -30,7 +31,7 @@
             </div>
             <img id="outArrow" src="../images/arrow-narrow-up-svgrepo-com.svg" alt="redArrow">
         </div>
-        <div class="tabs">
+        <div class="tabs w-full">
             <div class="tabs__btns">
                 <button class="btn active" data-tab="controll" >Vizualizace</button>
                 <button class="btn" data-tab="desc" >Popis</button>

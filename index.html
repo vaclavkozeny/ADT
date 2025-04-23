@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="main.css">
     <title>ADT</title>
     <script src="main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -21,5 +22,62 @@
             </div>
           </div>
     </nav>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Interaktivní vizualizace abstraktních datových typů</h2>
+        <p class="text-lg text-gray-700">Webová aplikace pro výuku a pochopení základních ADT jako zásobník, fronta, seznam, množina a další. Vizualizace, interaktivní ovládání a krokování v reálném čase.</p>
+      </section>
+  
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-4">🎯 Hlavní funkce</h3>
+        <ul class="space-y-2 text-gray-800">
+          <li>✅ Interaktivní ovládání s vizualizací změn v reálném čase</li>
+          <li>✅ Vizualizace pomocí <strong>GSAP</strong></li>
+          <li>✅ Moderní a responzivní UI díky <strong>Tailwind CSS</strong></li>
+        </ul>
+      </section>
+  
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-4">👨‍💻 Pro koho to je?</h3>
+        <ul class="space-y-2 text-gray-800">
+          <li>📘 Pro studenty, kteří se učí algoritmy a datové struktury</li>
+          <li>👩‍🏫 Pro učitele, kteří chtějí zatraktivnit výuku</li>
+          <li>🧑‍💼 Pro vývojáře, kteří si chtějí rychle osvěžit logiku ADT</li>
+        </ul>
+      </section>
+  
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-4">🚀 Vyber si datovou strukturu</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="./pages/stack.html" class="block p-4 bg-indigo-50 rounded-lg shadow hover:bg-indigo-100 transition">
+            <h4 class="text-lg font-bold text-indigo-700">📚 Zásobník (Stack)</h4>
+            <p class="text-sm text-gray-700">LIFO struktura – poslední dovnitř, první ven.</p>
+          </a>
+          <a href="./pages/queue.html" class="block p-4 bg-indigo-50 rounded-lg shadow hover:bg-indigo-100 transition">
+            <h4 class="text-lg font-bold text-indigo-700">📬 Fronta (Queue)</h4>
+            <p class="text-sm text-gray-700">FIFO – první dovnitř, první ven.</p>
+          </a>
+          <a href="./pages/list.html" class="block p-4 bg-indigo-50 rounded-lg shadow hover:bg-indigo-100 transition">
+            <h4 class="text-lg font-bold text-indigo-700">📃 Seznam (List)</h4>
+            <p class="text-sm text-gray-700">Dynamické pole s přístupem podle indexu.</p>
+          </a>
+          <a href="./pages/set.html" class="block p-4 bg-indigo-50 rounded-lg shadow hover:bg-indigo-100 transition">
+            <h4 class="text-lg font-bold text-indigo-700">🧺 Množina (Set)</h4>
+            <p class="text-sm text-gray-700">Unikátní prvky bez pořadí.</p>
+          </a>
+        </div>
+      </section>
+  
+      <section>
+        <h3 class="text-xl font-semibold mb-4">💡 O projektu</h3>
+        <p class="text-gray-700">Vytvořeno jako semestrální projekt s cílem nabídnout interaktivní a přehlednou pomůcku pro pochopení abstraktních datových typů. V budoucnu plánujeme přidat podporu pro stromy, grafy a další struktury.</p>
+      </section>
+    </main>
+  
+    <footer class="bg-white shadow mt-16 p-6">
+      <div class="max-w-5xl mx-auto text-sm text-gray-500 text-center">
+        © 2025 ADT Visualizer. Vytvořeno s ❤️ pro vzdělávání.
+      </div>
+    </footer>
 </body>
 </html>

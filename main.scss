@@ -50,13 +50,11 @@ nav{
     margin-right: 2rem;
 } 
 .app{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+    
     .animation{
         width: 50vw;
         height: 70vh;
-        border: 1px solid $debug;
+        //border: 1px solid $debug;
         display: flex;
         align-items: flex-start;
         justify-content: center;
@@ -68,7 +66,7 @@ nav{
         }
         #stack{
             width: 20vw;
-            height: 45vh;
+            height: 48vh;
             border-bottom: 2px solid black;
             border-left: 2px solid black;
             border-right: 2px solid black;
@@ -181,6 +179,10 @@ nav{
             justify-content: flex-start;
             align-items: center;
             gap: 2px;
+            input{
+                border: 2px solid black;
+                border-radius: 5px;
+            }
         }
         .tabs__btns{
             display: flex;
@@ -199,7 +201,6 @@ nav{
         }
         .ctrl{
             width: 8vw;
-            height: 3vh;
             border-radius: 7px;
             &.in{
                 background-color: $inGreen;
@@ -210,10 +211,8 @@ nav{
         }
         #inpt{
             width: 8vw;
-            height: 3vh;
         }
-        width: 50vw;
-        border: 1px solid $debug;
+        //border: 1px solid $debug;
         &__panels{
             >div{
                 width: 100%;
@@ -224,4 +223,11 @@ nav{
             }
         }
     }
+}
+@media only screen and (min-width: 48rem){
+.app{
+    .tabs{
+        width: 50%;
+    }
+}
 }
