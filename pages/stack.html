@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
     <title>ADT</title>
 
@@ -23,8 +24,8 @@
             </div>
         </div>
     </nav>
-    <div class="app">
-        <div class="animation" id="anim">
+    <div class="flex flex-col md:flex-row flex-wrap app">
+        <div class="animation w-full max-w-xs mx-auto" id="anim">
             <img id="inArrow" src="../images/arrow-narrow-right-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
                 <div id="stack"></div>
@@ -32,7 +33,7 @@
             </div>
             <img id="outArrow" src="../images/arrow-narrow-left-svgrepo-com.svg" alt="redArrow">
         </div>
-        <div class="tabs">
+        <div class="tabs w-full">
             <div class="tabs__btns">
                 <button class="btn active" data-tab="controll">Vizualizace</button>
                 <button class="btn" data-tab="desc">Popis</button>
@@ -51,9 +52,12 @@
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Zásobník</h2>
+                        <p>Zásobník je lineární datová struktura, která funguje na principu LIFO (Last In, First Out) - poslední vložený prvek je první, který se odebere. <b>Představit si ho můžete jako zásobník talířů - nové talíře pokládáte na vršek hromady a také je z vršku odebíráte</b></p>
+                        <h3>Akce</h3>
                         <ul>
-                            <li>LIFO (last in, first out)</li>
-                            <li>přístup pouze k vrcholu</li>
+                            <li>Push (přidání) - přidá prvek na vršek zásobníku</li>
+                            <li>Pop (odebrání) - odebere prvek z vršeku zásobníku</li>
+                            <li>Peek - vrátí prvek na vrcholu zásobníku</li>
                         </ul>
                     </div>
                 </div>
@@ -61,14 +65,44 @@
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Přidání: O(1)</li>
-                            <li>Odebrání: O(1)</li>
+                            <li>Push: O(1)</li>
+                            <li>Pop: O(1)</li>
+                            <li>Peek: O(1)</li>
                         </ul>
                     </div>
                 </div>
                 <div id="code" class="content">
                     <div class="container">
                         <h2>Kód</h2>
+                        <pre>
+                            <code class="language-javascript">
+class Stack {
+    constructor() {
+        this.items = [];
+    }
+    push(element) {
+        this.items.push(element);
+    }
+    pop() {
+        if (this.isEmpty()) return null;
+        return this.items.pop();
+    }
+    peek() {
+        if (this.isEmpty()) return null;
+        return this.items[this.items.length - 1];
+    }
+    isEmpty() {
+        return this.items.length === 0;
+    }
+    size() {
+        return this.items.length;
+    }
+    clear() {
+        this.items = [];
+    }
+}
+                            </code>
+                        </pre>
                     </div>
                 </div>
             </div>
