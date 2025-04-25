@@ -1,11 +1,8 @@
 let inputValue;
 let inputPosition;
-let deleteValue;
-let deleteType;
-const inputValueElem = document.getElementById("inpt_addValue");
-const inputPositionElem = document.getElementById("inpt_addPosition");
-const deleteElem = document.getElementById("inpt_delete");
-const deleteTypeElem = document.getElementById('deleteType');
+const ValueElem = document.getElementById("inpt_addValue");
+const PositionElem = document.getElementById("inpt_addPosition");
+const deleteTypeElem = document.getElementById("deleteType");
 const err = document.getElementById('error');
 const greenArrow = document.getElementById('inArrow');
 const redArrow = document.getElementById('outArrow');
@@ -36,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function listAdd() {
     if (animating) return;
-    inputValue = inputValueElem.value;
-    inputPosition = inputPositionElem.value;
+    inputValue = ValueElem.value;
+    inputPosition = PositionElem.value;
     let rec = listElem.getBoundingClientRect();
     let greenRect = greenArrow.getBoundingClientRect();
     const homeX = rec.x - greenRect.x - greenRect.width;
@@ -164,12 +161,11 @@ function createDataElement(_inputValue) {
     gsap.set(elem, { y: 0, opacity: 1 });
 }
 function listDelete() {
-    deleteValue = deleteElem.value;
+    deleteValue = ValueElem.value;
     deleteType = deleteTypeElem.value;
     if (animating) return;
     
-    else if (deleteValue && deleteType === "Hodnota" && list.some(div=>div.textContent.includes(deleteValue))) {
-        
+    if (deleteValue && deleteType === "Hodnota" && list.some(div=>div.textContent.includes(deleteValue))) {
         animating = true;
         deleteValue = list.findIndex(div=>div.textContent.includes(deleteValue))
         let elem = list[deleteValue]
@@ -238,8 +234,6 @@ function listDelete() {
     }
 }
 function changeValue() {
-    inputValue = inputValueElem.value;
-    inputPosition = inputPositionElem.value;
-    deleteValue = deleteElem.value;
-    deleteType = deleteTypeElem.value;
+    inputValue = ValueElem.value;
+    inputPosition = PositionElem.value;
 }

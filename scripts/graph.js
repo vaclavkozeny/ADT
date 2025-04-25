@@ -20,11 +20,23 @@ const data = { nodes: nodesData, edges: edgesData };
 const options = {interaction: {
     dragView: false,
     zoomView: false
+  },
+  physics: {
+    enabled: true,  
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -50,
+      centralGravity: 0.01,
+      springLength: 100,
+      springConstant: 0.08,
+      damping: 0.4
+    },
+    minVelocity: 0.75
   }};
 
 // Vytvoření grafu
 const network = new vis.Network(container, data, options);
-nextNodeId = 2;
+nextNodeId = 0;
 function addNode() {
     if(inputOutputValue == '' || inputOutputValue == null) return
     nodesData.add({ id: nextNodeId, label: inputOutputValue });

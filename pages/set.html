@@ -11,11 +11,11 @@
 </head>
 
 <body>
-    <nav>
-        <a class="navhome" href="../index.html">Domů</a>
+    <nav class="bg-gray-800 text-white px-6 py-3 flex justify-between items-center">
+        <a class="hover:text-blue-400" href="../index.html">Domů</a>
         <div class="dropdown">
             <button onclick="menu()">Množina</button>
-            <div class="dropdown-options hidden">
+            <div class="dropdown-options bg-gray-800 text-white hidden">
                 <a href="./stack.html">Zásobník</a>
           <a href="./queue.html">Fronta</a>
           <a href="./set.html">Množina</a>
@@ -23,16 +23,16 @@
           <a href="./graph.html">Graf</a>
             </div>
         </div>
-    </nav>
-    <div class="flex flex-col md:flex-row flex-wrap app">
-        <div class="animation" id="anim">
+      </nav>
+    <div class="flex flex-col md:flex-row app mx-auto gap-5">
+        <div class="animation w-full max-w-xs mx-auto" id="anim">
             <div id="appContainer">
                 <div id="set"></div>
                 <div id="error"></div>
             </div>
         </div>
-        <div class="tabs">
-            <div class="tabs__btns">
+        <div class="tabs w-full">
+            <div class="tabs__btns w-full flex flex-row justify-between">
                 <button class="btn active" data-tab="controll">Vizualizace</button>
                 <button class="btn" data-tab="desc">Popis</button>
                 <button class="btn" data-tab="complexity">Komplexita</button>
@@ -42,9 +42,11 @@
                 <div id="controll" class="content active">
                     <div class="container">
                         <h2>Vizualizace</h2>
-                        <input id="inpt" type="text" onchange="changeValue()" autocomplete="off">
-                        <button class="ctrl in" id="addBtn" >Add</button>
-                        <button class="ctrl out" id="delBtn"">Delete</button>
+                        <div class="flex flex-col gap-2">
+                            <input id="inpt" type="text" onchange="changeValue()" autocomplete="off">
+                        <button class="ctrl in p-2 bg-green-400" id="addBtn" >Add</button>
+                        <button class="ctrl out p-2 bg-red-400" id="delBtn"">Delete</button>
+                        </div>
                     </div>
                 </div>
                 <div id="desc" class="content">
