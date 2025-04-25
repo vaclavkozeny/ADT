@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
     <title>List</title>
-    
+
 </head>
+
 <body>
-    <nav>
-        <a class="navhome" href="../index.html">Domů</a>
+    <nav class="bg-gray-800 text-white px-6 py-3 flex justify-between items-center">
+        <a class="hover:text-blue-400" href="../index.html">Domů</a>
         <div class="dropdown">
             <button onclick="menu()">Seznam</button>
-            <div class="dropdown-options hidden">
+            <div class="dropdown-options bg-gray-800 text-white hidden">
                 <a href="./stack.html">Zásobník</a>
                 <a href="./queue.html">Fronta</a>
                 <a href="./set.html">Množina</a>
                 <a href="./list.html">Seznam</a>
                 <a href="./graph.html">Graf</a>
             </div>
-          </div>
+        </div>
     </nav>
-    <div class="flex flex-col md:flex-row flex-wrap app">
-        <div class="animation" id="anim">
+    <div class="flex flex-col md:flex-row app mx-auto gap-5">
+        <div class="animation w-full max-w-xs mx-auto" id="anim">
             <img id="inArrow" src="../images/arrow-narrow-down-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
                 <div id="list"></div>
@@ -31,56 +33,46 @@
             </div>
             <img id="outArrow" src="../images/arrow-narrow-up-svgrepo-com.svg" alt="redArrow">
         </div>
-        <div class="tabs">
-            <div class="tabs__btns">
-                <button class="btn active" data-tab="controll" >Vizualizace</button>
-                <button class="btn" data-tab="desc" >Popis</button>
-                <button class="btn" data-tab="complexity" >Komplexita</button>
+        <div class="tabs w-full">
+            <div class="tabs__btns w-full flex flex-row justify-between">
+                <button class="btn active" data-tab="controll">Vizualizace</button>
+                <button class="btn" data-tab="desc">Popis</button>
+                <button class="btn" data-tab="complexity">Komplexita</button>
                 <button class="btn" data-tab="code">Kód</button>
             </div>
             <div class="tabs__panels">
                 <div id="controll" class="content active">
                     <div class="container">
                         <h2>Vizualizace</h2>
-                        <div class="inputBox">
-                            <div>
-                                <div class="inputRow">
-                                    <label>Vstupní hodnota:</label>
-                                    <input id="inpt_addValue" type="text" onchange="changeValue()">
-                                </div>
-                                <div class="inputRow">
-                                    <label>Vstupní pozice:</label>
-                                    <input id="inpt_addPosition" type="text" onchange="changeValue()">
-                                </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="flex flex-row justify-between">
+                                <label>Hodnota:</label>
+                                <input id="inpt_addValue" type="text" class="w-20" onchange="changeValue()">
                             </div>
-                            <button class="ctrl in" onclick="listAdd()">Add</button>
+                            <div class="flex flex-row justify-between">
+                                <label>Pozice:</label>
+                                <input id="inpt_addPosition" type="text" class="w-20" onchange="changeValue()">
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label for="deleteType">Typ odstranění</label>
+                                <select id="deleteType" onchange="changeValue()">
+                                    <option>Hodnota</option>
+                                    <option>Pozice</option>
+                                </select>
+                            </div>
+                            
+                            <button class="ctrl in p-2 bg-green-400" onclick="listAdd()">Add</button>
+                            <button class="ctrl out p-2 bg-red-400" onclick="listDelete()">Delete</button>
                         </div>
-                        
-                        
-                        <div class="inputBox">
-                                <div class="inputRow delete">
-                                    <select id="deleteType" onchange="changeValue()">
-                                        <option>Hodnota</option>
-                                        <option>Pozice</option>
-                                    </select>
-                                    <label>pro odstranění: </label>
-                                    <input id="inpt_delete" type="text" onchange="changeValue()">
-                                </div>
-                            <button class="ctrl out" onclick="listDelete()">Delete</button>
-                        </div>
-                        
-                        
-                        
-                        
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Seznam</h2>
                         <ul>
-                            
+
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="complexity" class="content">
                     <div class="container">
@@ -89,7 +81,7 @@
                             <li>Přidání: O(n)/O(1)</li>
                             <li>Odebrání: O(n)</li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div id="code" class="content">
 
@@ -99,6 +91,7 @@
     </div>
 </body>
 <script src="../main.js"></script>
-    <script src="../scripts/list.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="../scripts/list.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
 </html>

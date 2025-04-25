@@ -12,8 +12,15 @@ let animating = false;
 const defaultEase = "power2.out";
 const defaultDuration = 0.5;
 
-document.addEventListener('DOMContentLoaded', () => {
+function arrowResize(){
     let rec = queueElem.getBoundingClientRect();
+    if (window.innerWidth < 768) {
+        console.log(rec.width/5)
+        console.log("mobil")
+        greenArrow.width = rec.width/5 - 3
+        redArrow.width = rec.width/5 - 3
+      }
+    
     let greenRect = greenArrow.getBoundingClientRect();
     let redRect = redArrow.getBoundingClientRect();
     gsap.set(greenArrow, { 
@@ -26,19 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0
     });
     gsap.set(err,{opacity:0})
-})
+}
+
+document.addEventListener('DOMContentLoaded', arrowResize)
 
 function enqueue() {
     if (animating) return;
     if (queue.length < queueSize) {
         if (inputval) {
+            let w = queueElem.getBoundingClientRect().width;
             animating = true;
             myId++;
             let elem = document.createElement('div');
             elem.textContent = inputval;
             elem.id = myId;
             elem.classList.add('data');
-            elem.classList.add('queue');
+            elem.classList.add('queue')
+            elem.style.width = Math.min(w/5-3,80) + "px"
+            //elem.classList.add('queue');
             queueElem.appendChild(elem);
             queue.push(elem);
             gsap.set(elem, { y: -500, x: queueElem.getBoundingClientRect().right - (queue.length * (elem.offsetWidth + 2)), opacity: 1 });

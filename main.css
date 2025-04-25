@@ -9,11 +9,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
 button {
   align-items: center;
   padding: 5px;
@@ -37,7 +32,6 @@ nav {
   display: block;
   position: absolute;
   overflow: auto;
-  background-color: rgb(212, 212, 212);
   border-radius: 2px;
   margin-top: 5px;
   z-index: 10;
@@ -52,9 +46,10 @@ nav {
   margin-right: 2rem;
 }
 
+.app {
+  width: 80%;
+}
 .app .animation {
-  width: 50vw;
-  height: 70vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -79,6 +74,7 @@ nav {
 }
 .app .animation #queue {
   width: 420px;
+  max-width: 420px;
   height: 15vh;
   border-bottom: 2px solid black;
   border-top: 2px solid black;
@@ -125,7 +121,6 @@ nav {
   height: 80px;
 }
 .app .animation .data.queue {
-  width: 80px;
   height: 100%;
 }
 .app .animation .data.set {
@@ -145,6 +140,14 @@ nav {
   margin-top: 5vh;
   text-align: center;
 }
+.app .tabs {
+  /*.tabs__btns{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+  }*/
+}
 .app .tabs .tabs__panels .inputRow {
   display: flex;
   flex-direction: row;
@@ -159,9 +162,6 @@ nav {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-}
-.app .tabs .tabs__panels .inputBox .ctrl {
-  height: 100%;
 }
 .app .tabs .tabs__panels .inputBox input {
   height: 100%;
@@ -180,12 +180,6 @@ nav {
   border: 2px solid black;
   border-radius: 5px;
 }
-.app .tabs .tabs__btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
 .app .tabs .btn {
   color: rgb(212, 212, 212);
   background-color: transparent;
@@ -196,17 +190,7 @@ nav {
   color: rgb(119, 89, 168);
 }
 .app .tabs .ctrl {
-  width: 8vw;
   border-radius: 7px;
-}
-.app .tabs .ctrl.in {
-  background-color: rgb(96, 219, 65);
-}
-.app .tabs .ctrl.out {
-  background-color: rgb(245, 90, 90);
-}
-.app .tabs #inpt {
-  width: 8vw;
 }
 .app .tabs__panels > div {
   width: 100%;
@@ -219,5 +203,17 @@ nav {
 @media only screen and (min-width: 48rem) {
   .app .tabs {
     width: 50%;
+  }
+}
+@media only screen and (max-width: 48rem) {
+  .app .animation #stack {
+    width: 40vw;
+  }
+  .app .animation #queue {
+    width: 50vw;
+  }
+  .app .animation .data.set {
+    width: 40px;
+    height: 40px;
   }
 }/*# sourceMappingURL=main.css.map */
