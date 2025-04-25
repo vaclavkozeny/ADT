@@ -12,10 +12,6 @@ $outRed:rgb(245, 90, 90);
 body {
     font-family: 'Roboto', sans-serif;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
 button{
     align-items: center;
     padding: 5px;
@@ -36,7 +32,6 @@ nav{
     display: block;
     position: absolute;
     overflow: auto;
-    background-color:$inactive;
     border-radius: 2px;
     margin-top: 5px;
     z-index: 10;
@@ -50,11 +45,8 @@ nav{
     margin-right: 2rem;
 } 
 .app{
-    
+    width: 80%;
     .animation{
-        width: 50vw;
-        height: 70vh;
-        //border: 1px solid $debug;
         display: flex;
         align-items: flex-start;
         justify-content: center;
@@ -78,6 +70,7 @@ nav{
         }
         #queue{
             width: 420px;
+            max-width: 420px;
             height: 15vh;
             border-bottom: 2px solid black;
             border-top: 2px solid black;
@@ -123,7 +116,6 @@ nav{
                 height: 80px;
             }
             &.queue{
-                width: 80px;
                 height: 100%;
             }
             &.set{
@@ -160,9 +152,6 @@ nav{
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                .ctrl{
-                    height: 100%;
-                }
                 margin-top: 1rem;
                 input{
                     height: 100%;
@@ -184,12 +173,12 @@ nav{
                 border-radius: 5px;
             }
         }
-        .tabs__btns{
+        /*.tabs__btns{
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             align-items: center;
-        }
+        }*/
         .btn{
             color: $inactive;
             background-color: transparent;
@@ -200,17 +189,8 @@ nav{
             }
         }
         .ctrl{
-            width: 8vw;
             border-radius: 7px;
-            &.in{
-                background-color: $inGreen;
-            }
-            &.out{
-                background-color: $outRed;
-            }
-        }
-        #inpt{
-            width: 8vw;
+            
         }
         //border: 1px solid $debug;
         &__panels{
@@ -231,3 +211,21 @@ nav{
     }
 }
 }
+@media only screen and (max-width: 48rem){
+    .app{
+        .animation{
+            #stack{
+                width: 40vw;
+            }
+            #queue{
+                width: 50vw;
+            }
+            .data{
+                &.set{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+    }
