@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
     <title>ADT</title>
-    
 </head>
+
 <body>
     <nav class="bg-gray-800 text-white px-6 py-3 flex justify-between items-center">
         <a class="hover:text-blue-400" href="../index.html">Domů</a>
         <div class="dropdown">
-            <button onclick="menu()">Fronta</button>
+            <button onclick="menu()">Buffer</button>
             <div class="dropdown-options bg-gray-800 text-white hidden">
                 <a href="./stack.html">Zásobník</a>
-          <a href="./queue.html">Fronta</a>
-          <a href="./set.html">Množina</a>
-          <a href="./list.html">Seznam</a>
-          <a href="./graph.html">Graf</a>
-          <a href="./buffer.html">Buffer</a>
+                <a href="./queue.html">Fronta</a>
+                <a href="./set.html">Množina</a>
+                <a href="./list.html">Seznam</a>
+                <a href="./graph.html">Graf</a>
+                <a href="./buffer.html">Buffer</a>
             </div>
         </div>
-      </nav>
+    </nav>
     <div class="flex flex-col md:flex-row app mx-auto gap-5">
         <div class="animation w-full max-w-xs mx-auto" id="anim">
-            <img id="inArrow" src="../images/arrow-narrow-down-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
-                <div id="queue"></div>
-                <div id="error">test</div>
+                <div id="buffer" class="w-96 h-96 border-2 border-black mt-20 border-dashed"></div>
+                <div id="error"></div>
             </div>
-            <img id="outArrow" src="../images/arrow-narrow-up-svgrepo-com.svg" alt="redArrow">
         </div>
         <div class="tabs w-full">
             <div class="tabs__btns w-full flex flex-row justify-between">
-                <button class="btn active" data-tab="controll" >Vizualizace</button>
-                <button class="btn" data-tab="desc" >Popis</button>
-                <button class="btn" data-tab="complexity" >Komplexita</button>
+                <button class="btn active" data-tab="controll">Vizualizace</button>
+                <button class="btn" data-tab="desc">Popis</button>
+                <button class="btn" data-tab="complexity">Komplexita</button>
                 <button class="btn" data-tab="code">Kód</button>
             </div>
             <div class="tabs__panels">
@@ -44,36 +43,38 @@
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <div class="flex flex-col gap-2">
-                        <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl in p-2 bg-green-400" onclick="enqueue()">Enqueue</button>
-                        <button class="ctrl out p-2 bg-red-400" onclick="dequeue()">Dequeue</button>
+                            <input id="inpt" type="text" class="w-full" onchange="changeValue()">
+                            <button class="ctrl in p-2 bg-green-400" onclick="bufferWrite()">Zapsat</button>
+                            <button class="ctrl out p-2 bg-red-400" onclick="bufferRead()">Číst</button>
                         </div>
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
-                        <h2>Fronta</h2>
-                        <ul>
-                            <li>FIFO (first in, first out)</li>
-                            <li>prvky se odebírají v pořadí, ve kterém se vkládají</li>
-                        </ul>
-                    </div> 
+                        <h2>Kruhový buffer</h2>
+                    </div>
                 </div>
                 <div id="complexity" class="content">
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Přidání: O(1)</li>
-                            <li>Odebrání: O(1)</li>
+                            <li>Push: O(1)</li>
+                            <li>Pop: O(1)</li>
+                            <li>Peek: O(1)</li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
-                <div id="code" class="content"></div>
+                <div id="code" class="content">
+                    <div class="container">
+                        <h2>Kód</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-<script src="../main.js"></script>
-    <script src="../scripts/queue.js"></script>
+    <script src="../main.js"></script>
+    <script src="../scripts/buffer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+</body>
+
 </html>
