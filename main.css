@@ -108,6 +108,9 @@ nav {
   border: 1px black solid;
   margin-top: 5rem;
 }
+.app .animation #buffer {
+  border-radius: 50%;
+}
 .app .animation .data {
   background-color: rgb(119, 89, 168);
   border-radius: 5px;
@@ -139,6 +142,27 @@ nav {
   justify-content: center;
   margin-top: 5vh;
   text-align: center;
+}
+.app .animation .cell {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app .animation .cell.head {
+  background-color: lightgreen;
+  z-index: -1;
+}
+.app .animation .cell.tail {
+  background-color: lightcoral;
+  z-index: -1;
 }
 .app .tabs {
   /*.tabs__btns{
