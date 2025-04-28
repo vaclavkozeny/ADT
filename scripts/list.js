@@ -198,7 +198,7 @@ function listDelete() {
     }
     if (deleteValue && deleteType === "Pozice") {
         animating = true;
-        deleteValue = parseInt(deleteValue);
+        deleteValue = parseInt(PositionElem.value);
         if(deleteValue >= list.length){
             error("Index je mimo");
             animating = false;
