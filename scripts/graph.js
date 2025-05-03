@@ -14,8 +14,28 @@ let inputOutputValue;
 const input = document.getElementById("inpt");
 let nodesData = new vis.DataSet([]);
 let edgesData = new vis.DataSet([]);
+let selectedNode;
+const toggleElem = document.getElementById("toggle");
+let mode;
 // Konfigurace pro graf
 const container = document.getElementById('network');
+container.addEventListener('click',()=>{
+  if(mode == "Přidat hrany"){
+    if(selectedNode && selectedNode.length != 0){
+      console.log(selectedNode)
+      let newNode = network.getSelectedNodes()
+      edgesData.add({from:selectedNode[0], to: newNode[0]})
+      selectedNode = null
+    }else{
+      selectedNode = network.getSelectedNodes()
+    }
+  }else if(mode == "Odebrat node"){
+    let del = network.getSelectedNodes()
+    if(del && del.length != 0){
+      nodesData.remove(del[0])
+    }
+  }
+})
 const data = { nodes: nodesData, edges: edgesData };
 const options = {interaction: {
     dragView: false,
@@ -45,7 +65,11 @@ function addNode() {
 function addEdge(){
     
 }
-
-  function changeValue() {
+function changeValue() {
     inputOutputValue = input.value;
 }
+function changeValueToggle(){
+  mode = toggleElem.value
+  selectedNode = null
+}
+changeValueToggle()

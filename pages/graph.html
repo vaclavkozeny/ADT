@@ -43,7 +43,10 @@
                         <div class="flex flex-col gap-2">
                         <input id="inpt" type="text" onchange="changeValue()">
                         <button class="ctrl in p-2 bg-green-400" onclick="addNode()">Přidat Node</button>
-                        <button class="ctrl out p-2 bg-red-400">Odebrat Node</button>
+                        <select id="toggle" onchange="changeValueToggle()">
+                            <option>Přidat hrany</option>
+                            <option>Odebrat node</option>
+                        </select>
                     </div>
                     </div>
                 </div>
