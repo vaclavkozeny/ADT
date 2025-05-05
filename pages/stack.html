@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
-    <title>ADT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+    <title>Zásobník</title>
 </head>
 
 <body>
@@ -61,7 +67,7 @@
                         <ul>
                             <li>Push (přidání) - přidá prvek na vršek zásobníku</li>
                             <li>Pop (odebrání) - odebere prvek z vršeku zásobníku</li>
-                            <li>Peek - vrátí prvek na vrcholu zásobníku</li>
+                            <li>Peek (náhled) - vrátí prvek na vrcholu zásobníku, neodebere ho</li>
                         </ul>
                     </div>
                 </div>
@@ -69,17 +75,18 @@
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Push: O(1)</li>
-                            <li>Pop: O(1)</li>
-                            <li>Peek: O(1)</li>
+                            <li>Přidání: O(1)</li>
+                            <li>Odebrání: O(1)</li>
+                            <li>Náhled: O(1)</li>
                         </ul>
                     </div>
                 </div>
                 <div id="code" class="content">
                     <div class="container">
                         <h2>Kód</h2>
+                        <h3>JavaScript</h3>
                         <pre>
-                            <code>
+                            <code class="language-js">
 class Stack {
     constructor() {
         this.items = [];
@@ -105,6 +112,36 @@ class Stack {
         this.items = [];
     }
 }
+                            </code>
+                        </pre>
+                        <h3>Python</h3>
+                        <pre>
+                            <code class="language-py">
+class Stack:
+    def __init__(self):
+        self.items = []
+        
+    def push(self, element):
+        self.items.append(element)
+        
+    def pop(self):
+        if self.isEmpty():
+            return None
+        return self.items.pop()
+        
+    def peek(self):
+        if self.isEmpty():
+            return None
+        return self.items[-1]
+        
+    def isEmpty(self):
+        return len(self.items) == 0
+        
+    def size(self):
+        return len(self.items)
+        
+    def clear(self):
+        self.items = []
                             </code>
                         </pre>
                     </div>

@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
-    <title>Set</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
+    <title>Množina</title>
 
 </head>
 
@@ -47,15 +56,19 @@
                         <div class="flex flex-col gap-2">
                             <input id="inpt" type="text" onchange="changeValue()" autocomplete="off">
                         <button class="ctrl in p-2 bg-green-400" id="addBtn" >Add</button>
-                        <button class="ctrl out p-2 bg-red-400" id="delBtn"">Delete</button>
+                        <button class="ctrl out p-2 bg-red-400" id="delBtn"">Remove</button>
                         </div>
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Množina</h2>
+                        <p>Množina je datová struktura, která ukládá jedinečné prvky bez konkrétního pořadí. <b>Představit si ji můžete jako soubor různých předmětů na stole, kde každý předmět může být přítomný pouze jednou bez ohledu na to, jak je uspořádán</b>.</p>
+                        <h2>Operace</h2>
                         <ul>
-
+                            <li>Add (přidání) - přidá prvek do množiny, pokud tam již není</li>
+                            <li>Remove (odebrání) - odebere prvek z množiny</li>
+                            <li>Contains (obsahuje) - zkontroluje, zda množina obsahuje daný prvek</li>
                         </ul>
                     </div>
                 </div>
@@ -64,19 +77,61 @@
                         <h2>Časová komplexita</h2>
                         <ul>
                             <li>Přidání: O(1)</li>
-                            <li>Odebrání: O(n)</li>
+                            <li>Odebrání: O(1)</li>
+                            <li>Obsahuje: O(1)</li>
                         </ul>
                     </div>
                 </div>
                 <div id="code" class="content">
-
+                    <div class="container">
+                        <pre>
+                            <code class="language-js">
+// JavaScript implementace množiny pomocí hashtable
+class CustomSet {
+  constructor() {
+    this.items = {};
+  }
+  
+  add(element) {
+    if (!this.contains(element)) {
+      this.items[element] = element;
+      return true;
+    }
+    return false;
+  }
+  
+  remove(element) {
+    if (this.contains(element)) {
+      delete this.items[element];
+      return true;
+    }
+    return false;
+  }
+  
+  contains(element) {
+    return Object.prototype.hasOwnProperty.call(this.items, element);
+  }
+  
+  values() {
+    return Object.values(this.items);
+  }
+  
+  size() {
+    return Object.keys(this.items).length;
+  }
+  
+}
+                            </code>
+                        </pre>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script src="../main.js"></script>
-<script src="../lib/physicsjs-full.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/physicsjs-full.min.js"></script>
+
 
 <script src="../scripts/set.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>

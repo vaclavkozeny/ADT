@@ -45,13 +45,13 @@ const options = {interaction: {
     enabled: true,  
     solver: 'forceAtlas2Based',
     forceAtlas2Based: {
-      gravitationalConstant: -50,
+      gravitationalConstant: -10,
       centralGravity: 0.01,
-      springLength: 100,
+      springLength: 10,
       springConstant: 0.08,
-      damping: 0.4
+      damping: 0.2
     },
-    minVelocity: 0.75
+    minVelocity: 0.25
   }};
 
 // Vytvoření grafu
@@ -62,9 +62,7 @@ function addNode() {
     nodesData.add({ id: nextNodeId, label: inputOutputValue });
     nextNodeId++;
   }
-function addEdge(){
-    
-}
+
 function changeValue() {
     inputOutputValue = input.value;
 }
