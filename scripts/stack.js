@@ -21,7 +21,7 @@ function stackPush() {
     if (animating) return;
 
     if (stack.length < stackSize) {
-        if (inputval) {textit
+        if (inputval) {
             animating = true;
             stack.push(inputval);
             //-------- create element ------------------
