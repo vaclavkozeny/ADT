@@ -52,16 +52,24 @@ function init() {
     same()
 }
 function bufferWrite() {
-    if(animating) return;
-    if(inputVal){
+    if (animating) return;
+    if (inputVal) {
         animating = true;
+
+        // Pokud je buffer plný, posuň tail – přepisujeme nejstarší prvek
+        if (count === bufferSize) {
+            tail = (tail + 1) % bufferSize;
+            count--; // snížíme, aby se o řádek níž mohl zase zvýšit
+        }
+
         cellElems[head].textContent = inputVal;
-        head++;
-        head = head%bufferSize
+        head = (head + 1) % bufferSize;
         count++;
-        movePointer(head,headElem)
+
+        movePointer(head, headElem);
+        movePointer(tail,tailElem);
+        animating = false;
     }
-    animating = false;
 }
 function bufferRead() {
     if(animating) return;
@@ -86,18 +94,15 @@ function movePointer(index,elem){
         y: rect.top + (rect.height/2) - home["y"],
         duration: defaultDuration,
         ease: defaultEase,
+        opacity: 1
     })
     same()
     
 }
 function same(){
     if(head == tail){
-        gsap.to(headElem,{opacity:0})
         tailElem.style.backgroundColor = "orange"
     }else{
-        gsap.to(headElem,{
-            opacity: 1
-        });
         tailElem.style.backgroundColor = "rgb(248,113,113)"
         headElem.style.backgroundColor = "rgb(52,211,153)"
     }

@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
-    <title>ADT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+    <title>Buffer</title>
 </head>
 
 <body>
@@ -53,21 +60,63 @@
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Kruhový buffer</h2>
+                        <p>Kruhový buffer je datová struktura založená na frontě s pevnou velikostí, která využívá paměť jako kruh.</p>
+                        <h2>Operace</h2>
+                        <ul>
+                            <li>Write - zápis dat na aktuální pozici zápisu</li>
+                            <li>Read - čtení dat z aktuální pozice čtení</li>
+                        </ul>
                     </div>
                 </div>
                 <div id="complexity" class="content">
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Push: O(1)</li>
-                            <li>Pop: O(1)</li>
-                            <li>Peek: O(1)</li>
+                            <li>Zápis: O(1)</li>
+                            <li>Čtení: O(1)</li>
                         </ul>
                     </div>
                 </div>
                 <div id="code" class="content">
                     <div class="container">
                         <h2>Kód</h2>
+                        <div class="container">
+                            <pre>
+                                <code  class="language-js">
+class CircularBuffer {
+    constructor(size) {
+        this.buffer = new Array(size);
+        this.size = size;
+        this.writeIndex = 0;
+        this.readIndex = 0;
+        this.count = 0;
+    }
+    
+    write(value) {
+        if (this.count === this.size) {
+            this.readIndex = (this.readIndex + 1) % this.size;
+            this.count--;
+        }
+
+        this.buffer[this.writeIndex] = value;
+        this.writeIndex = (this.writeIndex + 1) % this.size;
+        this.count++;
+    }
+    
+    read() {
+        if (this.count === 0) {
+            throw new Error("Buffer is empty");
+        }
+    
+        const value = this.buffer[this.readIndex];
+        this.readIndex = (this.readIndex + 1) % this.size;
+        this.count--;
+        return value;
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
                     </div>
                 </div>
             </div>
