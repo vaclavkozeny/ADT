@@ -70,9 +70,14 @@ function listAdd() {
         })
 
     }
-    else if (inputValue && inputPosition && inputPosition >= 0 && list.length < listSize) {
+    else if (inputValue && inputPosition && parseInt(inputPosition) >= 0 && list.length < listSize) {
         animating = true;
         inputPosition = parseInt(inputPosition)
+        if(inputPosition >= listSize){
+            error("Index je mimo");
+            animating = false;
+            return
+        }
         let elem = document.createElement('div');
         elem.textContent = inputValue;
         elem.id = myId;
@@ -148,6 +153,10 @@ function listAdd() {
             }, ">")
         }
         myId++;
+    }else if(parseInt(inputPosition)<0){
+        error("Index je mimo");
+            animating = false;
+            return
     }
 }
 function createDataElement(_inputValue) {
@@ -199,11 +208,11 @@ function listDelete() {
     if (deleteValue && deleteType === "Pozice") {
         animating = true;
         deleteValue = parseInt(PositionElem.value);
-        if(deleteValue >= list.length){
+        if(deleteValue >= list.length || deleteValue < 0){
             error("Index je mimo");
             animating = false;
             return;
-        } 
+        }
         let elem = list[deleteValue]
         let tl = gsap.timeline({
             onComplete: () => {

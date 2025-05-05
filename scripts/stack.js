@@ -21,7 +21,7 @@ function stackPush() {
     if (animating) return;
 
     if (stack.length < stackSize) {
-        if (inputval) {
+        if (inputval) {textit
             animating = true;
             stack.push(inputval);
             //-------- create element ------------------
@@ -58,7 +58,7 @@ function stackPush() {
     }
 
     else {
-        error('Stack is full');
+        error('Zásobník je plný');
     }
 
 }
@@ -100,7 +100,7 @@ function stackPop() {
 
     }
     else {
-        error('Stack is empty')
+        error('Zásobník je prázdný, není co odebrat')
     }
 }
 

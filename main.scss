@@ -95,8 +95,8 @@ nav {
 
         #set {
             display: flex;
-            width: 40vw;
-            height: 40vh;
+            width: 32vw;
+            height: 48vh;
             border: black solid 2px;
             margin-top: 10vh;
             display: block;
@@ -121,9 +121,11 @@ nav {
         #buffer {
             border-radius: 50%;
         }
-        #tree{
+
+        #tree {
             height: 35rem;
         }
+
         .data {
             background-color: $active;
             border-radius: 5px;
@@ -185,7 +187,8 @@ nav {
                 z-index: -1;
             }
         }
-        .node{
+
+        .node {
             width: 60px;
             height: 60px;
             border: 2px solid #333;
@@ -198,17 +201,21 @@ nav {
             display: flex;
             align-items: center;
             justify-content: center;
-            &.pointer{
+
+            &.pointer {
                 background-color: lightcoral;
                 z-index: -1;
             }
         }
+
         .line {
             position: absolute;
             background-color: black;
-            height: 2px; /* tloušťka čáry */
-            transform-origin: left center; /* otočíme podle levého okraje */
-          }
+            height: 2px;
+            /* tloušťka čáry */
+            transform-origin: left center;
+            /* otočíme podle levého okraje */
+        }
     }
 
     .tabs {
@@ -234,6 +241,12 @@ nav {
                     height: 100%;
                 }
 
+            }
+            #code {
+                pre {
+                    width: 100%;
+                    max-width: 100%;
+                }
             }
         }
 
@@ -298,6 +311,18 @@ nav {
 }
 
 @media only screen and (max-width: 48rem) {
+    body {
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
+    }
+
     .app {
         .animation {
             #stack {
@@ -307,7 +332,9 @@ nav {
             #queue {
                 width: 50vw;
             }
-
+            #set{
+                width: 70vw;
+            }
             .data {
                 &.set {
                     width: 40px;

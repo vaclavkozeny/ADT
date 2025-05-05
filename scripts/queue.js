@@ -16,7 +16,6 @@ function arrowResize(){
     let rec = queueElem.getBoundingClientRect();
     if (window.innerWidth < 768) {
         console.log(rec.width/5)
-        console.log("mobil")
         greenArrow.width = rec.width/5 - 3
         redArrow.width = rec.width/5 - 3
       }
@@ -79,7 +78,7 @@ function enqueue() {
             }, "<")
         }
     } else {
-        error("Queue is full")
+        error("Fronta je plná")
     }
 }
 
@@ -120,7 +119,7 @@ function dequeue() {
 
 
     } else {
-        error('Queue is empty')
+        error('Fronta je prázdná, není co odebrat')
         }
 
 }
