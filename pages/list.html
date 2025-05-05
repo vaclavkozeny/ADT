@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
     <title>List</title>
 
 </head>
@@ -70,9 +78,14 @@
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
-                        <h2>Seznam</h2>
+                        <h2>List (Seznam)</h2>
+                        <p>List je datová struktura, která ukládá prvky v určitém pořadí.</p>
+                        <h2>Operace</h2>
                         <ul>
-
+                            <li>Add (přidání) - přidá prvek na konec listu</li>
+                            <li>Insert (vložení) - vloží prvek na určenou pozici v listu</li>
+                            <li>Remove (odebrání) - odebere prvek z listu na základě jeho hodnoty nebo pozice</li>
+                            <li>Get (získání) - získá prvek na určité pozici</li>
                         </ul>
                     </div>
                 </div>
@@ -82,11 +95,94 @@
                         <ul>
                             <li>Přidání: O(n)/O(1)</li>
                             <li>Odebrání: O(n)</li>
+                            <li>Získání: O(n)/O(1)</li>
                         </ul>
                     </div>
                 </div>
                 <div id="code" class="content">
+                    <div class="container">
+                        <pre>
+                            <code class="language-js">
+class List{
+    constructor() {
+        this.list = []; 
+    }
+    
+    add(element) {
+        this.list.push(element);
+    }
+    
+    insertAt(element, index) {
+        if (index >= 0 && index <= this.list.length) {
+        this.list.splice(index, 0, element);
+        }
+    }
+    
+    remove(element) {
+        const index = this.list.indexOf(element);
+        if (index > -1) {
+        this.list.splice(index, 1);
+        }
+    }
+    
+    removeAt(index) {
+        if (index >= 0 && index < this.list.length) {
+        this.list.splice(index, 1);
+        }
+    }
+    
+    get(index) {
+        if (index >= 0 && index < this.list.length) {
+        return this.list[index];
+        } 
+    }
+    
+    contains(element) {
+        return this.list.includes(element);
+    }
+    
+    length() {
+        return this.list.length;
+    }
+}
+                            </code>
+                        </pre>
+                        <pre>
+                            <code class="language-py">
+class List:
+    def __init__(self):
+        self.list = []
 
+    def add(self, element):
+        self.list.append(element)
+
+    def insertAt(self, element, index):
+        if 0 <= index <= len(self.list):
+            self.list.insert(index, element)
+
+    def remove(self, element):
+        try:
+            self.list.remove(element)
+        except ValueError:
+            pass
+
+    def removeAt(self, index):
+        if 0 <= index < len(self.list):
+            del self.list[index]
+
+    def get(self, index):
+        if 0 <= index < len(self.list):
+            return self.list[index]
+        return None
+
+    def contains(self, element):
+        return element in self.list
+
+    def length(self):
+        return len(self.list)
+                            </code>
+                        </pre>
+                    </div>
                 </div>
             </div>
         </div>

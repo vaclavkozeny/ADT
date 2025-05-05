@@ -1,16 +1,39 @@
 const input = document.getElementById('inpt');
 const err = document.getElementById('error');
 const treeElem = document.getElementById('tree');
-let pointer;
 let inputVal;
-let currentX = 0;
-let isFirstNode = true;
+let myId = 0;
+let nodesData = new vis.DataSet([]);
+let edgesData = new vis.DataSet([]);
+
+document.addEventListener('DOMContentLoaded', () => {
+    gsap.set(err, { opacity: 0 })
+});
+const data = { nodes: nodesData, edges: edgesData };
+const options = {
+    interaction: {
+      dragView: false,
+      zoomView: false
+    },
+    physics: {
+        enabled: false,  
+},
+layout: {
+    hierarchical: {
+      direction: "UD",
+      sortMethod: "directed",
+    },
+  },};
+
+// Vytvoření grafu
+const network = new vis.Network(treeElem, data, options);
 class Node {
     constructor(data) {
         this.data = data;
         this.left = null;
         this.right = null;
-        this.elem = null;
+        this.visId = null;
+        this.x = null;
     }
 }
 //https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/
@@ -18,68 +41,50 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-    insert(data) {
-        let newNode = new Node(data);
-        let nodeElem = document.createElement('div');
-        nodeElem.classList.add("node");
-        nodeElem.textContent = data;
-        treeElem.appendChild(nodeElem)
-        let rootHome = { "x": nodeElem.getBoundingClientRect().left, "y": nodeElem.getBoundingClientRect().top }
-        newNode.elem = nodeElem;
+    insert(inValue) {
+        let newNode = new Node(inValue);
         if (this.root === null) {
+            newNode.visId = myId++;
             this.root = newNode;
-            let tRec = treeElem.getBoundingClientRect();
-            gsap.set(newNode.elem, {
-                x: -rootHome["x"] + tRec.left + (tRec.width / 2) - newNode.elem.getBoundingClientRect().width / 2,
-                y: -rootHome["y"] + tRec.top + 20
-            })
-            gsap.to(pointer,{
-                x: -rootHome["x"] + tRec.left + (tRec.width / 2) - newNode.elem.getBoundingClientRect().width / 2,
-                y: -rootHome["y"] + tRec.top + 20,
-            })
-        }
-        else
+            nodesData.add({ id: newNode.visId, label: newNode.data.toString(),x: 0, y:50 });
+            network.setData({ nodes: nodesData, edges: edgesData });
+        } else{
             this.insertNode(this.root, newNode);
+        }
     }
     insertNode(node, newNode) {
-        let nRec = newNode.elem.getBoundingClientRect();
+        const offset = 50
         if (newNode.data < node.data) {
             if (node.left === null) {
+                newNode.visId = myId++;
+                newNode.x = node.x - offset;
+                nodesData.add({
+                    id: newNode.visId,
+                    label: newNode.data.toString(),
+                    x: newNode.x,
+                });
+                edgesData.add({ from: node.visId, to: newNode.visId });
                 node.left = newNode;
-                gsap.set(newNode.elem, {
-                    x: -nRec.left + node.elem.getBoundingClientRect().left - nRec.width / 2 - 60,
-                    y: -1000
-                })
-                gsap.to(newNode.elem, {
-                    y: -nRec.top + node.elem.getBoundingClientRect().top + 75,
-                    /*onComplete: ()=>{
-                        drawLine(node, newNode);
-                    }*/
-                })
-                
-            }
-
-            else
+            } else {
                 this.insertNode(node.left, newNode);
-        }
-        else {
-            if (node.right === null) {
-                node.right = newNode;
-                gsap.set(newNode.elem, {
-                    x: -nRec.left + node.elem.getBoundingClientRect().left + nRec.width / 2 + 60,
-                    y: -1000
-                })
-                gsap.to(newNode.elem, {
-                    y: -nRec.top + node.elem.getBoundingClientRect().top + 75,
-                    /*onComplete: ()=>{
-                        drawLine(node, newNode);
-                    }*/
-                })
             }
-            else
+        } else {
+            if (node.right === null) {
+                newNode.visId = myId++;
+                newNode.x = node.x + offset;
+                nodesData.add({
+                    id: newNode.visId,
+                    label: newNode.data.toString(),
+                    x: newNode.x,
+                });
+                edgesData.add({ from: node.visId, to: newNode.visId });
+                node.right = newNode;
+            } else {
                 this.insertNode(node.right, newNode);
+            }
         }
     }
+    
     getRootNode() {
         return this.root;
     }
@@ -144,43 +149,14 @@ findMinNode(node)
 let BST = new BinarySearchTree();
 document.addEventListener('DOMContentLoaded', () => {
     gsap.set(err, { opacity: 0 })
-    /*pointer = document.createElement('div');
-    pointer.classList.add("node");
-    pointer.classList.add("pointer")
-    treeElem.appendChild(pointer)
-    gsap.set(pointer,{opacity:0})*/
 });
 
 function addToTree() {
     BST.insert(parseInt(inputVal));
-
 }
 function deleteFromTree(){
     BST.remove(parseInt(inputVal))
 }
-/*function drawLine(parentNode, childNode) {
-    if (!parentNode || !childNode) return;
-    const rect1 = parentNode.elem.getBoundingClientRect();
-    const rect2 = childNode.elem.getBoundingClientRect();
-    const rectKontejner = treeElem.getBoundingClientRect();
-    const x1 = rect1.left - rectKontejner.left + rect1.width / 2;
-      const y1 = rect1.top - rectKontejner.top + rect1.height / 2;
-      const x2 = rect2.left - rectKontejner.left + rect2.width / 2;
-      const y2 = rect2.top - rectKontejner.top + rect2.height / 2;
-
-      const delka = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-      const uhel = Math.atan2(y2 - y1, x2 - x1);
-
-      const cara = document.createElement('div');
-      cara.classList.add('line');
-      cara.style.left = `${x1}px`;
-      cara.style.top = `${y1}px`;
-      cara.style.height = `${delka}px`;
-      cara.style.transform = `rotate(${uhel}rad)`;
-
-      treeElem.appendChild(cara)
-
-}*/
 
 
 function changeValue() {

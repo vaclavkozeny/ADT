@@ -20,10 +20,10 @@ Physics(function (world) {
     const viewHeight = selem.height;
 
     const viewportBounds = Physics.aabb(
-        viewLeft+50,
-        viewTop+50,
-        viewLeft + viewWidth-50,
-        viewTop + viewHeight-50
+        viewLeft+20,
+        viewTop+20,
+        viewLeft + viewWidth-20,
+        viewTop + viewHeight-20
     );
     // Okraje, kolize, gravitace
     world.add([

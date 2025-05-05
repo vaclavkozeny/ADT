@@ -89,8 +89,8 @@ nav {
 }
 .app .animation #set {
   display: flex;
-  width: 40vw;
-  height: 40vh;
+  width: 32vw;
+  height: 48vh;
   border: black solid 2px;
   margin-top: 10vh;
   display: block;
@@ -189,8 +189,10 @@ nav {
 .app .animation .line {
   position: absolute;
   background-color: black;
-  height: 2px; /* tloušťka čáry */
-  transform-origin: left center; /* otočíme podle levého okraje */
+  height: 2px;
+  /* tloušťka čáry */
+  transform-origin: left center;
+  /* otočíme podle levého okraje */
 }
 .app .tabs {
   /*.tabs__btns{
@@ -217,6 +219,10 @@ nav {
 }
 .app .tabs .tabs__panels .inputBox input {
   height: 100%;
+}
+.app .tabs .tabs__panels #code pre {
+  width: 100%;
+  max-width: 100%;
 }
 .app .tabs .container {
   width: 80%;
@@ -258,11 +264,24 @@ nav {
   }
 }
 @media only screen and (max-width: 48rem) {
+  body {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+  body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+  }
   .app .animation #stack {
     width: 40vw;
   }
   .app .animation #queue {
     width: 50vw;
+  }
+  .app .animation #set {
+    width: 70vw;
   }
   .app .animation .data.set {
     width: 40px;

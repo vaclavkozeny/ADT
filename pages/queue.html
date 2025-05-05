@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
-    <title>ADT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
+    <title>Fronta</title>
     
 </head>
 <body>
@@ -24,12 +32,12 @@
             </div>
         </div>
       </nav>
-    <div class="flex flex-col md:flex-row app mx-auto gap-5">
+    <div class="flex flex-col md:flex-row app mx-auto gap-20">
         <div class="animation w-full max-w-xs mx-auto" id="anim">
             <img id="inArrow" src="../images/arrow-narrow-down-svgrepo-com.svg" alt="greenArrow">
             <div id="appContainer">
                 <div id="queue"></div>
-                <div id="error">test</div>
+                <div id="error"></div>
             </div>
             <img id="outArrow" src="../images/arrow-narrow-up-svgrepo-com.svg" alt="redArrow">
         </div>
@@ -54,9 +62,12 @@
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Fronta</h2>
+                        <p>Fronta je lineární datová struktura, která funguje na principu FIFO (First In, First Out) - první vložený prvek je první, který se odebere. <b>Představit si ji můžete jako frontu lidí čekajících u pokladny - lidé se připojují na konec fronty a obslouženi jsou od začátku fronty.</b></p>
+                        <h2>Akce</h2>
                         <ul>
-                            <li>FIFO (first in, first out)</li>
-                            <li>prvky se odebírají v pořadí, ve kterém se vkládají</li>
+                            <li>Enqueue (přidání) - přidá prvek na konec fronty</li>
+                            <li>Dequeue (odebrání) - odebere prvek ze začátku fronty</li>
+                            <li>Peek (náhled) - vrátí prvek na začátku fronty bez jeho odebrání</li>
                         </ul>
                     </div> 
                 </div>
@@ -66,10 +77,83 @@
                         <ul>
                             <li>Přidání: O(1)</li>
                             <li>Odebrání: O(1)</li>
+                            <li>Náhled: O(1)</li>
                         </ul>
                     </div> 
                 </div>
-                <div id="code" class="content"></div>
+                <div id="code" class="content">
+                    <div class="container">
+                    <h2>Ukázka kódu</h2>
+                <h3>JavaScript</h3>
+                <pre>
+                    <code class="language-js">
+// JavaScript implementace fronty
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+  
+  enqueue(element) {
+    this.items.push(element);
+  }
+  
+  dequeue() {
+    if (this.isEmpty()) return null;
+    return this.items.shift();
+  }
+  
+  peek() {
+    if (this.isEmpty()) return null;
+    return this.items[0];
+  }
+  
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  
+  size() {
+    return this.items.length;
+  }
+  
+  clear() {
+    this.items = [];
+  }
+}
+                    </code>
+                </pre>
+                <h3>Python</h3>
+                <pre>
+                    <code class="language-py">
+# Python implementace fronty
+class Queue:
+    def __init__(self):
+        self.items = []
+        
+    def enqueue(self, element):
+        self.items.append(element)
+        
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        return self.items.pop(0)
+        
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.items[0]
+        
+    def is_empty(self):
+        return len(self.items) == 0
+        
+    def size(self):
+        return len(self.items)
+        
+    def clear(self):
+        self.items = []
+                    </code>
+                </pre>
+            </div>
+                </div>
             </div>
         </div>
     </div>
