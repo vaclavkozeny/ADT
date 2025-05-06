@@ -17,28 +17,15 @@ button {
     align-items: center;
     padding: 5px;
 }
-
-nav {
-    height: 2rem;
-    background-color: $inactive;
+.mobileOnly{
+    display: none;    
+}
+.desktopOnly{
     display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
 }
-
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-
-.dropdown-options {
-    display: block;
-    position: absolute;
-    overflow: auto;
-    border-radius: 2px;
-    margin-top: 5px;
-    z-index: 10;
+.icon{
+    width: 30px;
+    height: 30px;
 }
 
 .hidden {
@@ -317,7 +304,12 @@ nav {
         scrollbar-width: none;
         /* Firefox */
     }
-
+    .mobileOnly{
+        display: block;    
+    }
+    .desktopOnly{
+        display: none;
+    }
     body::-webkit-scrollbar {
         display: none;
         /* Safari and Chrome */
