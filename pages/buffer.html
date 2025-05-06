@@ -17,21 +17,39 @@
 </head>
 
 <body>
-    <nav class="bg-gray-800 text-white px-6 py-3 flex justify-between items-center">
-        <a class="hover:text-blue-400" href="../index.html">Domů</a>
-        <div class="dropdown">
-            <button onclick="menu()">Buffer</button>
-            <div class="dropdown-options bg-gray-800 text-white hidden">
-                <a href="./stack.html">Zásobník</a>
-                <a href="./queue.html">Fronta</a>
-                <a href="./set.html">Množina</a>
-                <a href="./list.html">Seznam</a>
-                <a href="./graph.html">Graf</a>
-                <a href="./buffer.html">Buffer</a>
-                <a href="./tree.html">Strom</a>
+    
+<nav class="bg-gray-800 text-white">
+    <div class="flex flex-row w-full p-3">
+        <a class="hover:text-blue-400 mr-auto text-center" href="../index.html"><img src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
+        <div class="desktopOnly">
+            <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">Strom</a>
+        </div>
+        <div class="dropdown ml-auto relative mobileOnly">
+            <button onclick="menu()" class="focus:outline-none ">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div id="dropdown-menu" class="dropdown-options bg-gray-800 text-white flex-col absolute right-0 top-full hidden w-48 z-50">
+                <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">Strom</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
     <div class="flex flex-col md:flex-row app mx-auto gap-5">
         <div class="animation w-full max-w-xs mx-auto" id="anim">
             <div id="appContainer">
@@ -60,7 +78,8 @@
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Kruhový buffer</h2>
-                        <p>Kruhový buffer je datová struktura založená na frontě s pevnou velikostí, která využívá paměť jako kruh.</p>
+                        <p>Kruhový buffer je datová struktura založená na frontě s pevnou velikostí, která využívá paměť
+                            jako kruh.</p>
                         <h2>Operace</h2>
                         <ul>
                             <li>Write - zápis dat na aktuální pozici zápisu</li>

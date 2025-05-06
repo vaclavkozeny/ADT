@@ -1,7 +1,7 @@
-const name='select';
-function menu(){
-    const menus = document.querySelectorAll('.dropdown-options');
-    menus.forEach(m=>m.classList.toggle('hidden'))
+function menu() {
+    const dropdown = document.getElementById('dropdown-menu');
+    dropdown.classList.toggle('hidden');
+    dropdown.classList.toggle('flex');
 }
 let tabbtns = document.querySelectorAll(".btn");
 let tabcontent = document.querySelectorAll(".content");
@@ -21,6 +21,15 @@ if(tabbtns && tabcontent){
         })
     })
 }
+window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdown-menu');
+    const button = document.querySelector('.dropdown button');
+    
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden');
+        dropdown.classList.remove('flex');
+    }
+});
 function error(str) {
     if (errorDisplayed) return;
     errorDisplayed = true;
