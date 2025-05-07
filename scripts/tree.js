@@ -9,6 +9,7 @@ let nodesData = new vis.DataSet([]);
 let edgesData = new vis.DataSet([]);
 let inorderX = 0;
 let traversalType;
+let errorDisplayed = false;
 document.addEventListener('DOMContentLoaded', () => {
     gsap.set(err, { opacity: 0 })
 });
@@ -43,7 +44,6 @@ async function highlightNode(visId, color = "#FFA500", delay = 500) {
     await sleep(delay);
     nodesData.update({ id: visId, color: { background: "#97C2FC" } }); // výchozí barva Vis.js
 }
-//https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/
 class BinarySearchTree {
     constructor() {
         this.root = null;
@@ -115,7 +115,6 @@ class BinarySearchTree {
 
     removeNode(node, value) {
         if (node === null) return null;
-
         if (value < node.data) {
             node.left = this.removeNode(node.left, value);
             return node;
@@ -187,10 +186,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addToTree() {
-    BST.insert(parseInt(inputVal));
+    if(inputVal && parseInt(inputVal) != NaN)
+        BST.insert(parseInt(inputVal));
+    else
+        error("Zadej hodnotu")
 }
 function deleteFromTree() {
-    BST.remove(parseInt(inputVal))
+    if(inputVal && parseInt(inputVal) != NaN)
+        BST.remove(parseInt(inputVal))
+    else
+        error("Zadej hodnotu")
 }
 
 
