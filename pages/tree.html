@@ -15,7 +15,7 @@
 <body>
     <nav class="bg-gray-800 text-white">
         <div class="flex flex-row w-full p-3">
-            <a class="hover:text-blue-400 mr-auto text-center" href="../index.html"><img src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
+            <a class="hover:text-blue-400 mr-auto text-center flex items-center" href="../index.html"><img src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
             <div class="desktopOnly">
                 <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
@@ -46,9 +46,9 @@
         </div>
     </nav>
     <div class="flex flex-col md:flex-row app mx-auto gap-5">
-        <div class="animation w-full max-w-2xl mx-auto grow" id="anim">
+        <div class="animation mx-auto" id="anim">
             <div id="appContainer" class="w-full">
-                <div id="tree" class="w-full border-2 border-black mt-20 border-dashed"></div>
+                <div id="tree" class="border-2 border-black mt-20 border-dashed"></div>
                 <div id="error"></div>
             </div>
         </div>
@@ -65,8 +65,16 @@
                         <h2>Vizualizace</h2>
                         <div class="flex flex-col gap-2">
                             <input id="inpt" type="number" class="w-full" onchange="changeValue()" autocomplete="off">
-                            <button class="ctrl in p-2 bg-green-400" onclick="addToTree()">Zapsat</button>
-                            <button class="ctrl out p-2 bg-red-400" onclick="deleteFromTree()">Číst</button>
+                            <button class="ctrl in p-2 bg-green-400" onclick="addToTree()">Přidat</button>
+                            <button class="ctrl out p-2 bg-red-400" onclick="deleteFromTree()">Odebrat</button>
+                            <h2>Průchod</h2>
+                            <select id="toggle">
+                                <option>preorder</option>
+                                <option>inorder</option>
+                                <option>postorder</option>
+                            </select>
+                            <button class="ctrl out p-2 bg-green-400" onclick="traverseTree()">Projít</button>
+                            <p id="output"></p>
                         </div>
                     </div>
                 </div>
@@ -79,8 +87,7 @@
                     <div class="container">
                         <h2>Časová komplexita</h2>
                         <ul>
-                            <li>Přidání: O(logN)</li>
-                            <li>Odebrání: O(logN)</li>
+                            <li>Přidání a Odebrání: bestcase O(logN) / worstcase O(n)</li>
                         </ul>
                     </div>
                 </div>
