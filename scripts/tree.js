@@ -196,6 +196,7 @@ function deleteFromTree() {
         BST.remove(parseInt(inputVal))
     else
         error("Zadej hodnotu")
+
 }
 
 
