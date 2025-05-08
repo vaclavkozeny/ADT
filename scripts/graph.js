@@ -29,7 +29,7 @@ container.addEventListener('click',()=>{
     }else{
       selectedNode = network.getSelectedNodes()
     }
-  }else if(mode == "Odebrat node"){
+  }else if(mode == "Odebrat uzly"){
     let del = network.getSelectedNodes()
     if(del && del.length != 0){
       nodesData.remove(del[0])

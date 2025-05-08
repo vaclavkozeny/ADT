@@ -206,9 +206,9 @@ function traverseTree(){
     traversalType = switchElem.value;
     console.log(traversalType)
     BST.cleerOutput()
-    if(traversalType == "preorder")
+    if(traversalType == "Preorder")
         BST.preorder(BST.getRoot())
-    else if (traversalType == "inorder")
+    else if (traversalType == "Inorder")
         BST.inorder(BST.getRoot())
     else
         BST.postorder(BST.getRoot())
