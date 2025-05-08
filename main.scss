@@ -288,7 +288,6 @@ button {
         }
     }
 }
-
 @media only screen and (min-width: 48rem) {
     .app {
         .tabs {
@@ -298,17 +297,18 @@ button {
 }
 
 @media only screen and (max-width: 48rem) {
-    body {
-        -ms-overflow-style: none;
-        /* Internet Explorer 10+ */
-        scrollbar-width: none;
-        /* Firefox */
-    }
+    
     .mobileOnly{
         display: block;    
     }
     .desktopOnly{
         display: none;
+    }
+    body {
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
     }
     body::-webkit-scrollbar {
         display: none;

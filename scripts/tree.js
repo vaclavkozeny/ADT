@@ -186,14 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addToTree() {
-    if(inputVal && parseInt(inputVal) != NaN)
+    if(inputVal && parseInt(inputVal) != NaN){
         BST.insert(parseInt(inputVal));
+        input.value = "";
+        changeValue()
+    }  
     else
         error("Zadej hodnotu")
 }
 function deleteFromTree() {
-    if(inputVal && parseInt(inputVal) != NaN)
+    if(inputVal && parseInt(inputVal) != NaN){
         BST.remove(parseInt(inputVal))
+        input.value = "";
+        changeValue()
+    }
     else
         error("Zadej hodnotu")
 }

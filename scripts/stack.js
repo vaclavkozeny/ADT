@@ -54,6 +54,11 @@ function stackPush() {
                 opacity: 1,
                 ease: defaultEase,
             },"<")
+            input.value = "";
+            changeValue()
+        }
+        else{
+            error('Zadej hodnotu')
         }
     }
 
@@ -96,6 +101,8 @@ function stackPop() {
             opacity: stack.length === 0 ? 0 : 1,
             ease: defaultEase,
         }, "<")
+        input.value = "";
+        changeValue()
 
 
     }
