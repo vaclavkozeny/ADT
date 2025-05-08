@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,41 +19,46 @@
 </head>
 <nav class="bg-gray-800 text-white">
     <div class="flex flex-row w-full p-3">
-        <a class="hover:text-blue-400 mr-auto text-center flex items-center" href="../index.html"><img src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
+        <a class="hover:text-blue-400 mr-auto text-center flex items-center" href="../index.html"><img
+                src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
         <div class="desktopOnly">
             <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
+            <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
+            <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
+            <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+            <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./graph.html">Graf</a>
+            <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
+            <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
         </div>
         <div class="dropdown ml-auto relative mobileOnly">
             <button onclick="menu()" class="focus:outline-none ">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 17 14">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-            <div id="dropdown-menu" class="dropdown-options bg-gray-800 text-white flex-col absolute right-0 top-full hidden w-48 z-50">
+            <div id="dropdown-menu"
+                class="dropdown-options bg-gray-800 text-white flex-col absolute right-0 top-full hidden w-48 z-50">
                 <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
                 <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
                 <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
                 <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
-                <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
+                <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./graph.html">Graf</a>
                 <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
                 <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
             </div>
         </div>
     </div>
 </nav>
+
 <body>
     <div class="flex flex-col md:flex-row app mx-auto gap-5">
         <div class="animation w-full max-w-md mx-auto" id="anim">
-            <!-- Kontejner pro vizualizaci grafu -->
-            <div id="network"></div>
+            <div id="appContainer">
+                <div id="network"></div>
+                <div id="error"></div>
+            </div>
         </div>
         <div class="tabs w-full">
             <div class="tabs__btns w-full flex flex-row justify-between">
@@ -66,20 +72,23 @@
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <div class="flex flex-col gap-2">
-                        <input id="inpt" type="text" onchange="changeValue()">
-                        <button class="ctrl in p-2 bg-green-400" onclick="addNode()">Přidat uzel</button>
-                        <label for="toggle">Režim myši</label>
-                        <select id="toggle" onchange="changeValueToggle()">
-                            <option>Přidat hrany</option>
-                            <option>Odebrat uzly</option>
-                        </select>
-                    </div>
+                            <input id="inpt" type="text" onchange="changeValue()" autocomplete="off"
+                                placeholder="Zadej text nebo číslo">
+                            <button class="ctrl in p-2 bg-green-400" onclick="addNode()">Přidat uzel</button>
+                            <label for="toggle">Režim myši</label>
+                            <select id="toggle" onchange="changeValueToggle()">
+                                <option>Přidat hrany</option>
+                                <option>Odebrat uzly</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Graf</h2>
-                        <p>Graf je nelineární datová struktura skládající se z uzlů (vrcholů) a hran, které tyto uzly spojují. <b>Představit si ho můžete jako mapu měst (uzly) spojenou silnicemi (hrany)</b>.</p>
+                        <p>Graf je nelineární datová struktura skládající se z uzlů (vrcholů) a hran, které tyto uzly
+                            spojují. <b>Představit si ho můžete jako mapu měst (uzly) spojenou silnicemi (hrany)</b>.
+                        </p>
                         <h2>Operace</h2>
                         <ul>
                             <li>Přidání uzlu / hrany</li>
@@ -101,7 +110,8 @@
                     <div class="container">
                         <h2>Kód</h2>
                         <div class="container">
-                            <a class="text-blue-600" href="https://javascripttoday.com/blog/graph-data-structure-in-javascript/">JavaScript</a>
+                            <a class="text-blue-600"
+                                href="https://javascripttoday.com/blog/graph-data-structure-in-javascript/">JavaScript</a>
                             <pre>
                                 <code class="language-js">
 class Graph {
@@ -135,4 +145,5 @@ class Graph {
     <script src="../scripts/graph.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 </body>
+
 </html>
