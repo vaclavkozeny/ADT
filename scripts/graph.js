@@ -17,32 +17,40 @@ let edgesData = new vis.DataSet([]);
 let selectedNode;
 const toggleElem = document.getElementById("toggle");
 let mode;
+const err = document.getElementById('error');
+let errorDisplayed = false;
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  gsap.set(err, { opacity: 0 })
+})
 // Konfigurace pro graf
 const container = document.getElementById('network');
-container.addEventListener('click',()=>{
-  if(mode == "Přidat hrany"){
-    if(selectedNode && selectedNode.length != 0){
+container.addEventListener('click', () => {
+  if (mode == "Přidat hrany") {
+    if (selectedNode && selectedNode.length != 0) {
       console.log(selectedNode)
       let newNode = network.getSelectedNodes()
-      edgesData.add({from:selectedNode[0], to: newNode[0]})
+      edgesData.add({ from: selectedNode[0], to: newNode[0] })
       selectedNode = null
-    }else{
+    } else {
       selectedNode = network.getSelectedNodes()
     }
-  }else if(mode == "Odebrat uzly"){
+  } else if (mode == "Odebrat uzly") {
     let del = network.getSelectedNodes()
-    if(del && del.length != 0){
+    if (del && del.length != 0) {
       nodesData.remove(del[0])
     }
   }
 })
 const data = { nodes: nodesData, edges: edgesData };
-const options = {interaction: {
+const options = {
+  interaction: {
     dragView: false,
     zoomView: false
   },
   physics: {
-    enabled: true,  
+    enabled: true,
     solver: 'forceAtlas2Based',
     forceAtlas2Based: {
       gravitationalConstant: -10,
@@ -52,21 +60,27 @@ const options = {interaction: {
       damping: 0.2
     },
     minVelocity: 0.25
-  }};
+  }
+};
 
 // Vytvoření grafu
 const network = new vis.Network(container, data, options);
 nextNodeId = 0;
 function addNode() {
-    if(inputOutputValue == '' || inputOutputValue == null) return
-    nodesData.add({ id: nextNodeId, label: inputOutputValue });
-    nextNodeId++;
+  if (inputOutputValue == '' || inputOutputValue == null) {
+    error("Zadej hodnotu");
+    return
   }
+  nodesData.add({ id: nextNodeId, label: inputOutputValue });
+  nextNodeId++;
+  input.value = "";
+  changeValue()
+}
 
 function changeValue() {
-    inputOutputValue = input.value;
+  inputOutputValue = input.value;
 }
-function changeValueToggle(){
+function changeValueToggle() {
   mode = toggleElem.value
   selectedNode = null
 }

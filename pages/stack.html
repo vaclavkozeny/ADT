@@ -19,26 +19,28 @@
 <body>
     <nav class="bg-gray-800 text-white">
         <div class="flex flex-row w-full p-3">
-            <a class="hover:text-blue-400 mr-auto text-center flex items-center" href="../index.html"><img src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
+            <a class="hover:text-blue-400 mr-auto text-center flex items-center" href="../index.html"><img
+                    src="../images/home-svgrepo-com-w.svg" class="h-8 w-auto"></a>
             <div class="desktopOnly">
-                <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
+                <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./stack.html">Zásobník</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
+                <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
             </div>
             <div class="dropdown ml-auto relative mobileOnly">
                 <button onclick="menu()" class="focus:outline-none ">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 17 14">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
-                <div id="dropdown-menu" class="dropdown-options bg-gray-800 text-white flex-col absolute right-0 top-full hidden w-48 z-50">
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
+                <div id="dropdown-menu"
+                    class="dropdown-options bg-gray-800 text-white flex-col absolute right-0 top-full hidden w-48 z-50">
+                    <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./stack.html">Zásobník</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
@@ -70,16 +72,18 @@
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <div class="flex flex-col gap-2">
-                            <input id="inpt" type="text" class="w-full" onchange="changeValue()">
-                        <button class="ctrl in p-2 bg-green-400" onclick="stackPush()">Push</button>
-                        <button class="ctrl out p-2 bg-red-400" onclick="stackPop()">Pop</button>
+                            <input id="inpt" type="text" class="w-full" onchange="changeValue()" autocomplete="off" placeholder="Zadej text nebo číslo">
+                            <button class="ctrl in p-2 bg-green-400" onclick="stackPush()">Push</button>
+                            <button class="ctrl out p-2 bg-red-400" onclick="stackPop()">Pop</button>
                         </div>
                     </div>
                 </div>
                 <div id="desc" class="content">
                     <div class="container">
                         <h2>Zásobník</h2>
-                        <p>Zásobník je lineární datová struktura, která funguje na principu LIFO (Last In, First Out) - poslední vložený prvek je první, který se odebere. <b>Představit si ho můžete jako zásobník talířů - nové talíře pokládáte na vršek hromady a také je z vršku odebíráte</b></p>
+                        <p>Zásobník je lineární datová struktura, která funguje na principu LIFO (Last In, First Out) -
+                            poslední vložený prvek je první, který se odebere. <b>Představit si ho můžete jako zásobník
+                                talířů - nové talíře pokládáte na vršek hromady a také je z vršku odebíráte</b></p>
                         <h3>Akce</h3>
                         <ul>
                             <li>Push (přidání) - přidá prvek na vršek zásobníku</li>
@@ -170,4 +174,5 @@ class Stack:
     <script src="../scripts/stack.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 </body>
+
 </html>

@@ -26,7 +26,7 @@
                 <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+                    <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./list.html">Seznam</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
@@ -43,7 +43,7 @@
                     <a class="px-4 py-2 hover:bg-gray-700" href="./stack.html">Zásobník</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./queue.html">Fronta</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./set.html">Množina</a>
-                    <a class="px-4 py-2 hover:bg-gray-700" href="./list.html">Seznam</a>
+                    <a class="px-4 py-2 hover:bg-gray-700 underline decoration-solid" href="./list.html">Seznam</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./graph.html">Graf</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./buffer.html">Buffer</a>
                     <a class="px-4 py-2 hover:bg-gray-700" href="./tree.html">BST</a>
@@ -72,21 +72,16 @@
                     <div class="container">
                         <h2>Vizualizace</h2>
                         <div class="flex flex-col gap-2">
-                            <div class="flex flex-row justify-between">
-                                <label>Hodnota:</label>
-                                <input id="inpt_addValue" type="text" class="w-20" onchange="changeValue()">
-                            </div>
-                            <div class="flex flex-row justify-between">
+                                <label for="inpt_addValue">Hodnota:</label>
+                                <input id="inpt_addValue" type="text" class="w-full" onchange="changeValue()" autocomplete="off" placeholder="Zadej text nebo číslo">
+
                                 <label>Pozice:</label>
-                                <input id="inpt_addPosition" type="text" class="w-20" onchange="changeValue()">
-                            </div>
-                            <div class="flex flex-row justify-between">
+                                <input id="inpt_addPosition" type="text" class="w-ful" onchange="changeValue()" autocomplete="off" placeholder="Zadej číslo">
                                 <label for="deleteType">Typ odstranění</label>
                                 <select id="deleteType" onchange="changeValue()">
                                     <option>Hodnota</option>
                                     <option>Pozice</option>
                                 </select>
-                            </div>
                             
                             <button class="ctrl in p-2 bg-green-400" onclick="listAdd()">Přidat</button>
                             <button class="ctrl out p-2 bg-red-400" onclick="listDelete()">Odebrat</button>

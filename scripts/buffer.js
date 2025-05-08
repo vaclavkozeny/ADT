@@ -69,6 +69,10 @@ function bufferWrite() {
         movePointer(head, headElem);
         movePointer(tail,tailElem);
         animating = false;
+        input.value = "";
+        changeValue()
+    }else{
+        error("Zadej hodnotu")
     }
 }
 function bufferRead() {
