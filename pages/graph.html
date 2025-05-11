@@ -54,13 +54,13 @@
 
 <body>
     <div class="flex flex-col md:flex-row app mx-auto gap-5">
-        <div class="animation w-full max-w-md mx-auto" id="anim">
-            <div id="appContainer">
-                <div id="network"></div>
+        <div class="animation mx-auto" id="anim">
+            <div id="appContainer" class="w-full">
+                <div id="network" class="border-2 border-black mt-20 border-dashed"></div>
                 <div id="error"></div>
             </div>
         </div>
-        <div class="tabs w-full">
+        <div class="tabs w-full mb-20">
             <div class="tabs__btns w-full flex flex-row justify-between">
                 <button class="btn active" data-tab="controll">Vizualizace</button>
                 <button class="btn" data-tab="desc">Popis</button>
