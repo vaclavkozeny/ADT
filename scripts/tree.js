@@ -17,7 +17,8 @@ const data = { nodes: nodesData, edges: edgesData };
 const options = {
     interaction: {
         dragView: true,
-        zoomView: true
+        zoomView: true,
+        selectable: false
     },
     physics: {
         enabled: false,
